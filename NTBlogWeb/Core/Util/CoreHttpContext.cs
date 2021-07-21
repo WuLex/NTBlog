@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace NTBlog.Core.Util
+namespace NTBlogWeb.Core.Util
 {
     public static class CoreHttpContext
     {

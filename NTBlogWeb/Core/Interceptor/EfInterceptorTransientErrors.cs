@@ -1,4 +1,4 @@
-﻿using NTBlog.Core.Logging;
+﻿using NTBlogWeb.Core.Logging;
 using System;
 using System.Data.Common;
 //using System.Data.Entity.Infrastructure.Interception;
@@ -8,7 +8,7 @@ using System.Reflection;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 
-namespace NTBlog.Core.Interceptor
+namespace NTBlogWeb.Core.Interceptor
 {
     public class EfInterceptorTransientErrors : DbCommandInterceptor
     {

@@ -1,5 +1,5 @@
-﻿using NTBlog.Configs.Models;
-using NTBlog.Helper;
+﻿using NTBlogWeb.Configs.Models;
+using NTBlogWeb.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Web;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace NTBlog.Controllers
+namespace NTBlogWeb.Controllers
 {
     [Authorize]
     public class BaseController : Controller

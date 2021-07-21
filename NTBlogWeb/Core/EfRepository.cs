@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 //using EntityFramework.Extensions;
 //using System.Data.Entity.Validation;
 
-namespace NTBlog.Core
+namespace NTBlogWeb.Core
 {
     /// <summary>
     /// 基于EF的资源库基类

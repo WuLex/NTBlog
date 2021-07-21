@@ -8,7 +8,7 @@ using System.Web;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Caching.Memory;
 
-namespace NTBlog.Helper
+namespace NTBlogWeb.Helper
 {
     public class FileHelper
     {

@@ -31,9 +31,9 @@ System.Data.Entity.Core.EntityCommandExecutionException: An error occurred while
    在 System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
    在 System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
    在 System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
-   在 NTBlog.Controllers.HomeController.LoadSideInfo() 位置 c:\Users\Administrator\Desktop\besteasyteam-beginner.blog-基于Layui + asp.net mvc 开发的博客小系统\NTBlog\Controllers\HomeController.cs:行号 194
-   在 NTBlog.Controllers.HomeController.GetList(SearchInfo info, Boolean isLoadSideInfo) 位置 c:\Users\Administrator\Desktop\besteasyteam-beginner.blog-基于Layui + asp.net mvc 开发的博客小系统\NTBlog\Controllers\HomeController.cs:行号 225
-   在 NTBlog.Controllers.HomeController.List() 位置 c:\Users\Administrator\Desktop\besteasyteam-beginner.blog-基于Layui + asp.net mvc 开发的博客小系统\NTBlog\Controllers\HomeController.cs:行号 40
+   在 NTBlogWeb.Controllers.HomeController.LoadSideInfo() 位置 c:\Users\Administrator\Desktop\besteasyteam-NTBlogWeb-基于Layui + asp.net mvc 开发的博客小系统\NTBlog\Controllers\HomeController.cs:行号 194
+   在 NTBlogWeb.Controllers.HomeController.GetList(SearchInfo info, Boolean isLoadSideInfo) 位置 c:\Users\Administrator\Desktop\besteasyteam-NTBlogWeb-基于Layui + asp.net mvc 开发的博客小系统\NTBlog\Controllers\HomeController.cs:行号 225
+   在 NTBlogWeb.Controllers.HomeController.List() 位置 c:\Users\Administrator\Desktop\besteasyteam-NTBlogWeb-基于Layui + asp.net mvc 开发的博客小系统\NTBlog\Controllers\HomeController.cs:行号 40
    在 lambda_method(Closure , ControllerBase , Object[] )
    在 System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
    在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)

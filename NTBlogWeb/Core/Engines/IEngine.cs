@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace NTBlog.Core.Engines
+namespace NTBlogWeb.Core.Engines
 {
     /// <summary>
     /// Ioc 引擎接口

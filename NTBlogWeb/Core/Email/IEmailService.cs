@@ -18,7 +18,7 @@
  */
 using System.Threading.Tasks;
 
-namespace NTBlog.Core.Email
+namespace NTBlogWeb.Core.Email
 {
     /// <summary>
     /// 邮件服务接口

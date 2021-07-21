@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
-namespace NTBlog.Core
+namespace NTBlogWeb.Core
 {
     public interface IDbContext
     {

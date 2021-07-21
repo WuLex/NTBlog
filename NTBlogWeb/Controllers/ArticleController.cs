@@ -1,8 +1,8 @@
-﻿using NTBlog.Core;
-using NTBlog.Models;
-using NTBlog.Service.Interfaces;
-using NTBlog.Service.Messaging.Request;
-using NTBlog.ViewModels;
+﻿using NTBlogWeb.Core;
+using NTBlogWeb.Models;
+using NTBlogWeb.Service.Interfaces;
+using NTBlogWeb.Service.Messaging.Request;
+using NTBlogWeb.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +10,7 @@ using System.Web;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Primitives;
 
-namespace NTBlog.Controllers
+namespace NTBlogWeb.Controllers
 {
     public class ArticleController : BaseController
     {

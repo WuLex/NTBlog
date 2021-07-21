@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-using NTBlog.Core;
-using NTBlog.Models;
-using NTBlog.Core.Extension;
-using NTBlog.ViewModels;
-using NTBlog.Helper;
+using NTBlogWeb.Core;
+using NTBlogWeb.Models;
+using NTBlogWeb.Core.Extension;
+using NTBlogWeb.ViewModels;
+using NTBlogWeb.Helper;
 using Microsoft.AspNetCore.Mvc;
 
-namespace NTBlog.Controllers
+namespace NTBlogWeb.Controllers
 {
     public class CategoryController : BaseController
     {

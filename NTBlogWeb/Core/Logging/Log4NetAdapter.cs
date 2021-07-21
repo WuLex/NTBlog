@@ -1,4 +1,4 @@
-﻿using NTBlog.Helper;
+﻿using NTBlogWeb.Helper;
 using log4net;
 using log4net.Config;
 using System;
@@ -7,7 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 
-namespace NTBlog.Core.Logging
+namespace NTBlogWeb.Core.Logging
 {
     public class Log4NetAdapter : ILogger
     {

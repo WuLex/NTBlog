@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace NTBlog.Core.Util
+namespace NTBlogWeb.Core.Util
 {
     public static class HttpContext
     {

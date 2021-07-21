@@ -6,9 +6,9 @@ using System.Web;
 using System.Configuration;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using NTBlog.Core.Util;
+using NTBlogWeb.Core.Util;
 
-namespace NTBlog.Controllers
+namespace NTBlogWeb.Controllers
 {
     public class UploadController : Controller
     {

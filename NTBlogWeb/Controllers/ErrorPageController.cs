@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using Microsoft.AspNetCore.Mvc;
 
-namespace NTBlog.Controllers
+namespace NTBlogWeb.Controllers
 {
     public class ErrorPageController : Controller
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NTBlog.Core.Engines
+namespace NTBlogWeb.Core.Engines
 {
     public interface IDependency
     {

@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 using System.Data.Entity.ModelConfiguration;
-using NTBlog.Core;
+using NTBlogWeb.Core;
 
-namespace NTBlog.Models.Mapping
+namespace NTBlogWeb.Models.Mapping
 {
     public class ArticleMap : BaseEntityTypeConfiguration<Article>
     {

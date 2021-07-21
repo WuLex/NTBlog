@@ -12,3 +12,11 @@ D:\mynetcoreproject\NTBlogWeb\NTBlogWeb\obj\Debug\net5.0\scopedcss\bundle\NTBlog
 D:\mynetcoreproject\NTBlogWeb\NTBlogWeb\obj\Debug\net5.0\NTBlogWeb.TagHelpers.input.cache
 D:\mynetcoreproject\NTBlogWeb\NTBlogWeb\obj\Debug\net5.0\NTBlogWeb.TagHelpers.output.cache
 D:\mynetcoreproject\NTBlogWeb\NTBlogWeb\obj\Debug\net5.0\NTBlogWeb.RazorCoreGenerate.cache
+E:\mynetcoreProject\NTBlog\NTBlogWeb\obj\Debug\net5.0\NTBlogWeb.csprojAssemblyReference.cache
+E:\mynetcoreProject\NTBlog\NTBlogWeb\obj\Debug\net5.0\NTBlogWeb.GeneratedMSBuildEditorConfig.editorconfig
+E:\mynetcoreProject\NTBlog\NTBlogWeb\obj\Debug\net5.0\NTBlogWeb.AssemblyInfoInputs.cache
+E:\mynetcoreProject\NTBlog\NTBlogWeb\obj\Debug\net5.0\NTBlogWeb.AssemblyInfo.cs
+E:\mynetcoreProject\NTBlog\NTBlogWeb\obj\Debug\net5.0\NTBlogWeb.csproj.CoreCompileInputs.cache
+E:\mynetcoreProject\NTBlog\NTBlogWeb\obj\Debug\net5.0\NTBlogWeb.MvcApplicationPartsAssemblyInfo.cache
+E:\mynetcoreProject\NTBlog\NTBlogWeb\obj\Debug\net5.0\NTBlogWeb.RazorAssemblyInfo.cache
+E:\mynetcoreProject\NTBlog\NTBlogWeb\obj\Debug\net5.0\NTBlogWeb.RazorAssemblyInfo.cs

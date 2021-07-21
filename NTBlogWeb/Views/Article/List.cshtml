@@ -1,10 +1,10 @@
-﻿@model Beginner.Blog.Core.PagedList<Beginner.Blog.Models.Article>
+﻿@model NTBlogWeb.Core.PagedList<NTBlogWeb.Models.Article>
 @{
     ViewBag.Title = "文章列表";
     Layout = "~/Views/Shared/_ManageLayoutPage.cshtml";
 
 
-    var categories = ViewBag.Categories as IList<Beginner.Blog.Models.Category>;
+    var categories = ViewBag.Categories as IList<NTBlogWeb.Models.Category>;
 }
 
 <blockquote class="layui-elem-quote">

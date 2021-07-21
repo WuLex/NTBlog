@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NTBlog.Core.Email
+namespace NTBlogWeb.Core.Email
 {
     /// <summary>
     /// 邮件配置实体

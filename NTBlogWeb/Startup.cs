@@ -10,7 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using NTBlog.Core.Util;
+using NTBlogWeb.Core.Util;
 
 namespace NTBlogWeb
 {

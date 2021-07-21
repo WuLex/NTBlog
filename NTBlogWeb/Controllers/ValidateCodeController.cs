@@ -1,4 +1,4 @@
-﻿using NTBlog.Core.VerifyCode;
+﻿using NTBlogWeb.Core.VerifyCode;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Web;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace NTBlog.Controllers
+namespace NTBlogWeb.Controllers
 {
     public class ValidateCodeController : Controller
     {

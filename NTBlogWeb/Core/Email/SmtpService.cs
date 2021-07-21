@@ -8,11 +8,11 @@ using System.Web;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 
-using NTBlog.Core.Logging;
-using NTBlog.Core.Util;
-using NTBlog.Helper;
+using NTBlogWeb.Core.Logging;
+using NTBlogWeb.Core.Util;
+using NTBlogWeb.Helper;
 
-namespace NTBlog.Core.Email
+namespace NTBlogWeb.Core.Email
 {
     public class SmtpService : IEmailService
     {

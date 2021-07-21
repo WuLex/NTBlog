@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace NTBlog.Core.Engines
+namespace NTBlogWeb.Core.Engines
 {
     public class EngineContainer : IEngine
     {

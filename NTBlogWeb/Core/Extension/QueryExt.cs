@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NTBlog.Core.Extension
+namespace NTBlogWeb.Core.Extension
 {
     public static class QueryExt
     {

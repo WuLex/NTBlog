@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 using System.Web;
 using Microsoft.AspNetCore.Http;
 
-namespace NTBlog.Helper
+namespace NTBlogWeb.Helper
 {
     public class WebHelper
     {

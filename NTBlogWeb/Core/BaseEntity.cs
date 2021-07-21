@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NTBlog.Core
+namespace NTBlogWeb.Core
 {
     /// <summary>
     /// Base class for entities

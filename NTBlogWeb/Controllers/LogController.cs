@@ -1,13 +1,13 @@
-﻿using NTBlog.Core;
-using NTBlog.Core.Extension;
-using NTBlog.Models;
+﻿using NTBlogWeb.Core;
+using NTBlogWeb.Core.Extension;
+using NTBlogWeb.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Microsoft.AspNetCore.Mvc;
 
-namespace NTBlog.Controllers
+namespace NTBlogWeb.Controllers
 {
     public class LogController : BaseController
     {

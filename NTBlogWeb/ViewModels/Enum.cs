@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace NTBlog.ViewModels
+namespace NTBlogWeb.ViewModels
 {
     /// <summary>
     /// 文章状态

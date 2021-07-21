@@ -4,14 +4,14 @@ using System.Web;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using NTBlog.Core.Authentication;
-using NTBlog.ViewModels;
-using NTBlog.Core;
-using NTBlog.Models;
-using NTBlog.Core.Extension;
-using NTBlog.Helper;
+using NTBlogWeb.Core.Authentication;
+using NTBlogWeb.ViewModels;
+using NTBlogWeb.Core;
+using NTBlogWeb.Models;
+using NTBlogWeb.Core.Extension;
+using NTBlogWeb.Helper;
 
-namespace NTBlog.Controllers
+namespace NTBlogWeb.Controllers
 {
     public class AccountController : BaseController
     {

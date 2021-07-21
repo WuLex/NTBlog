@@ -9,7 +9,7 @@ using System.Reflection;
 using System.Web;
 using Microsoft.EntityFrameworkCore;
 
-namespace NTBlog.Core
+namespace NTBlogWeb.Core
 {
     public class ObjectContext : DbContext, IDbContext
     {

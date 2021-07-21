@@ -1,22 +1,22 @@
-﻿using Beginner.Blog.Core.Engines;
+﻿using NTBlogWeb.Core.Engines;
 using System.Linq;
 using System.Reflection;
 using Autofac;
 
 using Autofac.Integration.Mvc;
-using Beginner.Blog.Core;
-using Beginner.Blog.Models;
+using NTBlogWeb.Core;
+using NTBlogWeb.Models;
 using System;
-using Beginner.Blog.Service.Interfaces;
-using Beginner.Blog.Service.Implements;
-using Beginner.Blog.Core.Authentication;
-using Beginner.Blog.Helper;
+using NTBlogWeb.Service.Interfaces;
+using NTBlogWeb.Service.Implements;
+using NTBlogWeb.Core.Authentication;
+using NTBlogWeb.Helper;
 
 using System.Configuration;
-using Beginner.Blog.Core.Logging;
-using Beginner.Blog.Core.Email;
+using NTBlogWeb.Core.Logging;
+using NTBlogWeb.Core.Email;
 
-namespace Beginner.Blog
+namespace NTBlogWeb
 {
     public class AutoFacBootStrapper
     {

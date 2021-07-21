@@ -6,7 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Web;
 
-namespace NTBlog.Core
+namespace NTBlogWeb.Core
 {
     public class EntityContext //: DbContext
     {

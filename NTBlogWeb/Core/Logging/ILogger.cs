@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NTBlog.Core.Logging
+namespace NTBlogWeb.Core.Logging
 {
     public interface ILogger
     {

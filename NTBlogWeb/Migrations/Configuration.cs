@@ -1,18 +1,18 @@
-namespace Beginner.Blog.Migrations
+namespace NTBlogWeb.Migrations
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Beginner.Blog.Core.ObjectContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<NTBlogWeb.Core.ObjectContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(Beginner.Blog.Core.ObjectContext context)
+        protected override void Seed(NTBlogWeb.Core.ObjectContext context)
         {
             //  This method will be called after migrating to the latest version.
 

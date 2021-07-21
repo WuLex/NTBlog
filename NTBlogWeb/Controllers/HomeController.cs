@@ -1,8 +1,8 @@
-﻿using NTBlog.Core;
-using NTBlog.Core.Extension;
-using NTBlog.Helper;
-using NTBlog.Models;
-using NTBlog.ViewModels;
+﻿using NTBlogWeb.Core;
+using NTBlogWeb.Core.Extension;
+using NTBlogWeb.Helper;
+using NTBlogWeb.Models;
+using NTBlogWeb.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +10,7 @@ using System.Web;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace NTBlog.Controllers
+namespace NTBlogWeb.Controllers
 {
     public class HomeController : Controller
     {

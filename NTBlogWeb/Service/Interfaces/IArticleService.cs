@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using NTBlog.Core;
-using NTBlog.Models;
-using NTBlog.Service.Messaging.Request;
-using NTBlog.Core.Messaging;
+using NTBlogWeb.Core;
+using NTBlogWeb.Models;
+using NTBlogWeb.Service.Messaging.Request;
+using NTBlogWeb.Core.Messaging;
 
-namespace NTBlog.Service.Interfaces
+namespace NTBlogWeb.Service.Interfaces
 {
     /// <summary>
     /// 文章服务接口

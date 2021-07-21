@@ -1,6 +1,6 @@
 using System;
 
-namespace NTBlog.Models
+namespace NTBlogWeb.Models
 {
     public class ErrorViewModel
     {

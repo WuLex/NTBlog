@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using NTBlog.Core.Engines;
+using NTBlogWeb.Core.Engines;
 
-namespace NTBlog.Core
+namespace NTBlogWeb.Core
 {
     /// <summary>
     /// 只读资源库接口

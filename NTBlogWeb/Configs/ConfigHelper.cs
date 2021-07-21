@@ -1,15 +1,15 @@
-﻿using NTBlog.Configs.Models;
-using NTBlog.Helper;
+﻿using NTBlogWeb.Configs.Models;
+using NTBlogWeb.Helper;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
-using NTBlog.Core.Util;
+using NTBlogWeb.Core.Util;
 
 
-namespace NTBlog.Configs
+namespace NTBlogWeb.Configs
 {
     public class ConfigHelper
     {

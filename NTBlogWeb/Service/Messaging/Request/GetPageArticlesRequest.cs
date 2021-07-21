@@ -1,14 +1,14 @@
-﻿using NTBlog.Core;
-using NTBlog.Core.Messaging;
-using NTBlog.Models;
-using NTBlog.ViewModels;
+﻿using NTBlogWeb.Core;
+using NTBlogWeb.Core.Messaging;
+using NTBlogWeb.Models;
+using NTBlogWeb.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Web;
 
-namespace NTBlog.Service.Messaging.Request
+namespace NTBlogWeb.Service.Messaging.Request
 {
     public class GetPageArticlesRequest : PageRequest
     {

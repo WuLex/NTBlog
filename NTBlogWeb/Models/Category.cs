@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using NTBlog.Core;
+using NTBlogWeb.Core;
 
-namespace NTBlog.Models
+namespace NTBlogWeb.Models
 {
     /// <summary>
     /// 分类

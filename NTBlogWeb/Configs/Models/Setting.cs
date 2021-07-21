@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace NTBlog.Configs.Models
+namespace NTBlogWeb.Configs.Models
 {
     public class Setting
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace NTBlog.Core.Messaging
+namespace NTBlogWeb.Core.Messaging
 {
     public class PageRequest
     {

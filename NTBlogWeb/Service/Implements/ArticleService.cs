@@ -1,15 +1,15 @@
-﻿using NTBlog.Service.Interfaces;
+﻿using NTBlogWeb.Service.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using NTBlog.Core;
-using NTBlog.Models;
-using NTBlog.Service.Messaging.Request;
-using NTBlog.Core.Messaging;
-using NTBlog.Core.Extension;
+using NTBlogWeb.Core;
+using NTBlogWeb.Models;
+using NTBlogWeb.Service.Messaging.Request;
+using NTBlogWeb.Core.Messaging;
+using NTBlogWeb.Core.Extension;
 
-namespace NTBlog.Service.Implements
+namespace NTBlogWeb.Service.Implements
 {
     public class ArticleService : IArticleService
     {

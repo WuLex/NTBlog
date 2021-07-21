@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 
-namespace NTBlog.Core.Extension
+namespace NTBlogWeb.Core.Extension
 {
     public static class StrExt
     {

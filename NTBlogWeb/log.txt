@@ -1,19 +1,19 @@
 2021-07-21 14:51:11.359 +08:00 [INF] Loaded 3 extensions
 2021-07-21 14:51:11.578 +08:00 [INF] MSBuild registered from C:\Program Files\dotnet\sdk\5.0.203\
 2021-07-21 14:51:12.885 +08:00 [INF] Initializing upgrade step Select an entrypoint
-2021-07-21 14:51:12.889 +08:00 [INF] Setting entrypoint to only project in solution: D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Beginner.Blog.csproj
+2021-07-21 14:51:12.889 +08:00 [INF] Setting entrypoint to only project in solution: D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\NTBlogWeb.csproj
 2021-07-21 14:51:12.918 +08:00 [INF] Initializing upgrade step Select project to upgrade
 2021-07-21 14:51:12.998 +08:00 [INF] Initializing upgrade step Back up project
 2021-07-21 14:51:40.050 +08:00 [INF] Applying upgrade step Back up project
-2021-07-21 14:51:46.530 +08:00 [INF] Backing up D:\mynetcoreproject\NTBlogMVC\Beginner.Blog to D:\mynetcoreproject\NTBlogMVC\Beginner.Blog.backup
-2021-07-21 14:51:46.548 +08:00 [WRN] Could not copy file D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\log.txt due to 'The process cannot access the file 'D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\log.txt' because it is being used by another process.'
-2021-07-21 14:51:46.742 +08:00 [INF] Project backed up to D:\mynetcoreproject\NTBlogMVC\Beginner.Blog.backup
+2021-07-21 14:51:46.530 +08:00 [INF] Backing up D:\mynetcoreproject\NTBlogMVC\NTBlogWeb to D:\mynetcoreproject\NTBlogMVC\NTBlogWeb.backup
+2021-07-21 14:51:46.548 +08:00 [WRN] Could not copy file D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\log.txt due to 'The process cannot access the file 'D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\log.txt' because it is being used by another process.'
+2021-07-21 14:51:46.742 +08:00 [INF] Project backed up to D:\mynetcoreproject\NTBlogMVC\NTBlogWeb.backup
 2021-07-21 14:51:46.743 +08:00 [INF] Upgrade step Back up project applied successfully
 2021-07-21 14:51:49.501 +08:00 [INF] Initializing upgrade step Convert project file to SDK style
 2021-07-21 14:51:58.432 +08:00 [INF] Applying upgrade step Convert project file to SDK style
 2021-07-21 14:51:58.435 +08:00 [INF] Converting project file format with try-convert, version 0.7.226301
-2021-07-21 14:51:58.782 +08:00 [INF] [dotnet] D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Beginner.Blog.csproj contains a reference to System.Web, which is not supported on .NET Core. You may have significant work ahead of you to fully port this project.
-2021-07-21 14:51:58.783 +08:00 [INF] [dotnet] 'D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Beginner.Blog.csproj' is a legacy web project and/or references System.Web. Legacy Web projects and System.Web are unsupported on .NET Core. You will need to rewrite your application or find a way to not depend on System.Web to convert this project.
+2021-07-21 14:51:58.782 +08:00 [INF] [dotnet] D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\NTBlogWeb.csproj contains a reference to System.Web, which is not supported on .NET Core. You may have significant work ahead of you to fully port this project.
+2021-07-21 14:51:58.783 +08:00 [INF] [dotnet] 'D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\NTBlogWeb.csproj' is a legacy web project and/or references System.Web. Legacy Web projects and System.Web are unsupported on .NET Core. You will need to rewrite your application or find a way to not depend on System.Web to convert this project.
 2021-07-21 14:52:03.327 +08:00 [INF] [dotnet] Conversion complete!
 2021-07-21 14:52:03.631 +08:00 [INF] Project file converted successfully! The project may require additional changes to build successfully against the new .NET target.
 2021-07-21 14:52:43.841 +08:00 [INF] Upgrade step Convert project file to SDK style applied successfully
@@ -111,140 +111,140 @@ Microsoft.AspNetCore.Mvc.NewtonsoftJson, Version=5.0.8
 2021-07-21 14:54:13.642 +08:00 [INF] Initializing upgrade step Upgrade app config files
 2021-07-21 14:54:13.779 +08:00 [INF] Found 8 app settings for upgrade: webpages:Version, webpages:Enabled, ClientValidationEnabled, UnobtrusiveJavaScriptEnabled, DbConnectionName, ResourcesSystemUrl, LoggerName, EmailConfigPath
 2021-07-21 14:54:13.784 +08:00 [INF] Found 1 connection strings for upgrade: DefaultConnectionString
-2021-07-21 14:54:13.788 +08:00 [INF] 1 web page namespace imports need upgraded: Beginner.Blog
+2021-07-21 14:54:13.788 +08:00 [INF] 1 web page namespace imports need upgraded: NTBlogWeb
 2021-07-21 14:54:16.793 +08:00 [INF] Applying upgrade step Convert Application Settings
 2021-07-21 14:54:16.803 +08:00 [INF] Upgrade step Convert Application Settings applied successfully
 2021-07-21 14:54:22.008 +08:00 [INF] Applying upgrade step Convert Connection Strings
 2021-07-21 14:54:22.011 +08:00 [INF] Upgrade step Convert Connection Strings applied successfully
 2021-07-21 14:54:30.344 +08:00 [INF] Applying upgrade step Convert system.web.webPages.razor/pages/namespaces
-2021-07-21 14:54:30.346 +08:00 [INF] View imports written to D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Views\_ViewImports.cshtml
+2021-07-21 14:54:30.346 +08:00 [INF] View imports written to D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Views\_ViewImports.cshtml
 2021-07-21 14:54:30.346 +08:00 [INF] Upgrade step Convert system.web.webPages.razor/pages/namespaces applied successfully
 2021-07-21 14:54:30.347 +08:00 [INF] Applying upgrade step Upgrade app config files
 2021-07-21 14:54:30.347 +08:00 [INF] Upgrade step Upgrade app config files applied successfully
 2021-07-21 14:54:31.960 +08:00 [INF] Initializing upgrade step Update Razor files
-2021-07-21 14:54:33.956 +08:00 [INF] Identified 0 diagnostics in Razor files in project Beginner.Blog
+2021-07-21 14:54:33.956 +08:00 [INF] Identified 0 diagnostics in Razor files in project NTBlogWeb
 2021-07-21 14:54:33.961 +08:00 [INF] Found @helper functions in 0 documents
 2021-07-21 14:54:33.962 +08:00 [INF] Initializing upgrade step Update source code
 2021-07-21 14:54:39.256 +08:00 [INF] Applying upgrade step Apply fix for UA0001: ASP.NET Core projects should not reference ASP.NET namespaces
-2021-07-21 14:54:39.416 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\App_Start\RouteConfig.cs
-2021-07-21 14:54:39.430 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\AutoFacBootStrapper.cs
-2021-07-21 14:54:39.432 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Configs\ConfigHelper.cs
-2021-07-21 14:54:39.434 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Configs\Models\Setting.cs
-2021-07-21 14:54:39.435 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Controllers\AboutController.cs
-2021-07-21 14:54:39.437 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Controllers\AccountController.cs
-2021-07-21 14:54:39.439 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Controllers\ArticleController.cs
-2021-07-21 14:54:39.441 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Controllers\BaseController.cs
-2021-07-21 14:54:39.443 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Controllers\CategoryController.cs
-2021-07-21 14:54:39.445 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Controllers\ErrorPageController.cs
-2021-07-21 14:54:39.447 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Controllers\HomeController.cs
-2021-07-21 14:54:39.448 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Controllers\LogController.cs
-2021-07-21 14:54:39.450 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Controllers\MessageController.cs
-2021-07-21 14:54:39.452 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Controllers\SettingController.cs
-2021-07-21 14:54:39.454 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Controllers\UploadController.cs
-2021-07-21 14:54:39.455 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Controllers\ValidateCodeController.cs
-2021-07-21 14:54:39.459 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Core\Authentication\AspFormsAuthentication.cs
-2021-07-21 14:54:39.466 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Core\Email\SmtpService.cs
-2021-07-21 14:54:39.468 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Core\Engines\EngineContainer.cs
-2021-07-21 14:54:39.470 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Core\Engines\EngineContainerFactory.cs
-2021-07-21 14:54:39.471 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Core\Engines\IEngine.cs
-2021-07-21 14:54:39.474 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Core\EntityContext.cs
-2021-07-21 14:54:39.475 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Core\Enum.cs
-2021-07-21 14:54:39.477 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Core\Extension\StrExt.cs
-2021-07-21 14:54:39.479 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Core\Logging\Log4NetAdapter.cs
-2021-07-21 14:54:39.481 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Core\Messaging\GetPagesResponse.cs
-2021-07-21 14:54:39.482 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Core\Messaging\PageRequest.cs
-2021-07-21 14:54:39.484 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Core\Messaging\ResponseBase.cs
-2021-07-21 14:54:39.486 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Core\ObjectContext.cs
-2021-07-21 14:54:39.488 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Core\PagedList.cs
-2021-07-21 14:54:39.490 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Core\Sort.cs
-2021-07-21 14:54:39.492 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Core\VerifyCode\ValidateCode.cs
-2021-07-21 14:54:39.493 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Filters\FilterConfig.cs
-2021-07-21 14:54:39.495 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Filters\WebHandleErrorAttribute.cs
-2021-07-21 14:54:39.497 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Global.asax.cs
-2021-07-21 14:54:39.499 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Helper\ConfigHelper.cs
-2021-07-21 14:54:39.501 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Helper\DataHelper.cs
-2021-07-21 14:54:39.502 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Helper\FileHelper.cs
-2021-07-21 14:54:39.510 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Helper\PinYinHelper.cs
-2021-07-21 14:54:39.512 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Helper\WebHelper.cs
-2021-07-21 14:54:39.513 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Models\Account.cs
-2021-07-21 14:54:39.515 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Models\Archive.cs
-2021-07-21 14:54:39.517 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Models\Article.cs
-2021-07-21 14:54:39.518 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Models\Category.cs
-2021-07-21 14:54:39.521 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Models\Comment.cs
-2021-07-21 14:54:39.523 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Models\Log.cs
-2021-07-21 14:54:39.525 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Models\LoginLog.cs
-2021-07-21 14:54:39.526 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Models\Mapping\AccountMap.cs
-2021-07-21 14:54:39.528 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Models\Mapping\ArchiveMap.cs
-2021-07-21 14:54:39.530 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Models\Mapping\ArticleMap.cs
-2021-07-21 14:54:39.532 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Models\Mapping\CategoryMap.cs
-2021-07-21 14:54:39.533 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Models\Mapping\CommentMap.cs
-2021-07-21 14:54:39.535 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Models\Mapping\LoginLogMap.cs
-2021-07-21 14:54:39.538 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Models\Mapping\LogMap.cs
-2021-07-21 14:54:39.540 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Models\Mapping\TagMap.cs
-2021-07-21 14:54:39.541 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Models\Tag.cs
-2021-07-21 14:54:39.543 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Service\Implements\ArticleService.cs
-2021-07-21 14:54:39.545 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Service\Messaging\Request\GetPageArticlesRequest.cs
-2021-07-21 14:54:39.551 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\ViewModels\ArticleModel.cs
-2021-07-21 14:54:39.554 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\ViewModels\ArticleTopModel.cs
-2021-07-21 14:54:39.556 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\ViewModels\CategoryModel.cs
-2021-07-21 14:54:39.560 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\ViewModels\CommentModel.cs
-2021-07-21 14:54:39.561 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\ViewModels\Enum.cs
-2021-07-21 14:54:39.563 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\ViewModels\LoginModel.cs
-2021-07-21 14:54:39.979 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\App_Start\RouteConfig.cs
-2021-07-21 14:54:39.982 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Controllers\AboutController.cs
-2021-07-21 14:54:39.984 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Controllers\AccountController.cs
-2021-07-21 14:54:39.985 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Controllers\ArticleController.cs
-2021-07-21 14:54:39.987 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Controllers\BaseController.cs
-2021-07-21 14:54:39.989 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Controllers\CategoryController.cs
-2021-07-21 14:54:39.991 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Controllers\ErrorPageController.cs
-2021-07-21 14:54:39.993 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Controllers\HomeController.cs
-2021-07-21 14:54:39.998 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Controllers\LogController.cs
-2021-07-21 14:54:40.000 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Controllers\MessageController.cs
-2021-07-21 14:54:40.002 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Controllers\SettingController.cs
-2021-07-21 14:54:40.003 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Controllers\UploadController.cs
-2021-07-21 14:54:40.005 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Controllers\ValidateCodeController.cs
-2021-07-21 14:54:40.007 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Core\Authentication\AspFormsAuthentication.cs
-2021-07-21 14:54:40.009 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Core\Extension\StrExt.cs
-2021-07-21 14:54:40.011 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Core\VerifyCode\ValidateCode.cs
-2021-07-21 14:54:40.013 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Filters\FilterConfig.cs
-2021-07-21 14:54:40.015 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Filters\WebHandleErrorAttribute.cs
-2021-07-21 14:54:40.016 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Global.asax.cs
-2021-07-21 14:54:40.018 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Helper\FileHelper.cs
-2021-07-21 14:54:40.412 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\App_Start\RouteConfig.cs
-2021-07-21 14:54:40.414 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Global.asax.cs
+2021-07-21 14:54:39.416 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\App_Start\RouteConfig.cs
+2021-07-21 14:54:39.430 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\AutoFacBootStrapper.cs
+2021-07-21 14:54:39.432 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Configs\ConfigHelper.cs
+2021-07-21 14:54:39.434 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Configs\Models\Setting.cs
+2021-07-21 14:54:39.435 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Controllers\AboutController.cs
+2021-07-21 14:54:39.437 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Controllers\AccountController.cs
+2021-07-21 14:54:39.439 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Controllers\ArticleController.cs
+2021-07-21 14:54:39.441 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Controllers\BaseController.cs
+2021-07-21 14:54:39.443 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Controllers\CategoryController.cs
+2021-07-21 14:54:39.445 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Controllers\ErrorPageController.cs
+2021-07-21 14:54:39.447 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Controllers\HomeController.cs
+2021-07-21 14:54:39.448 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Controllers\LogController.cs
+2021-07-21 14:54:39.450 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Controllers\MessageController.cs
+2021-07-21 14:54:39.452 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Controllers\SettingController.cs
+2021-07-21 14:54:39.454 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Controllers\UploadController.cs
+2021-07-21 14:54:39.455 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Controllers\ValidateCodeController.cs
+2021-07-21 14:54:39.459 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Core\Authentication\AspFormsAuthentication.cs
+2021-07-21 14:54:39.466 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Core\Email\SmtpService.cs
+2021-07-21 14:54:39.468 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Core\Engines\EngineContainer.cs
+2021-07-21 14:54:39.470 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Core\Engines\EngineContainerFactory.cs
+2021-07-21 14:54:39.471 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Core\Engines\IEngine.cs
+2021-07-21 14:54:39.474 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Core\EntityContext.cs
+2021-07-21 14:54:39.475 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Core\Enum.cs
+2021-07-21 14:54:39.477 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Core\Extension\StrExt.cs
+2021-07-21 14:54:39.479 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Core\Logging\Log4NetAdapter.cs
+2021-07-21 14:54:39.481 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Core\Messaging\GetPagesResponse.cs
+2021-07-21 14:54:39.482 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Core\Messaging\PageRequest.cs
+2021-07-21 14:54:39.484 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Core\Messaging\ResponseBase.cs
+2021-07-21 14:54:39.486 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Core\ObjectContext.cs
+2021-07-21 14:54:39.488 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Core\PagedList.cs
+2021-07-21 14:54:39.490 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Core\Sort.cs
+2021-07-21 14:54:39.492 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Core\VerifyCode\ValidateCode.cs
+2021-07-21 14:54:39.493 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Filters\FilterConfig.cs
+2021-07-21 14:54:39.495 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Filters\WebHandleErrorAttribute.cs
+2021-07-21 14:54:39.497 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Global.asax.cs
+2021-07-21 14:54:39.499 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Helper\ConfigHelper.cs
+2021-07-21 14:54:39.501 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Helper\DataHelper.cs
+2021-07-21 14:54:39.502 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Helper\FileHelper.cs
+2021-07-21 14:54:39.510 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Helper\PinYinHelper.cs
+2021-07-21 14:54:39.512 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Helper\WebHelper.cs
+2021-07-21 14:54:39.513 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Models\Account.cs
+2021-07-21 14:54:39.515 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Models\Archive.cs
+2021-07-21 14:54:39.517 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Models\Article.cs
+2021-07-21 14:54:39.518 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Models\Category.cs
+2021-07-21 14:54:39.521 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Models\Comment.cs
+2021-07-21 14:54:39.523 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Models\Log.cs
+2021-07-21 14:54:39.525 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Models\LoginLog.cs
+2021-07-21 14:54:39.526 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Models\Mapping\AccountMap.cs
+2021-07-21 14:54:39.528 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Models\Mapping\ArchiveMap.cs
+2021-07-21 14:54:39.530 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Models\Mapping\ArticleMap.cs
+2021-07-21 14:54:39.532 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Models\Mapping\CategoryMap.cs
+2021-07-21 14:54:39.533 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Models\Mapping\CommentMap.cs
+2021-07-21 14:54:39.535 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Models\Mapping\LoginLogMap.cs
+2021-07-21 14:54:39.538 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Models\Mapping\LogMap.cs
+2021-07-21 14:54:39.540 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Models\Mapping\TagMap.cs
+2021-07-21 14:54:39.541 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Models\Tag.cs
+2021-07-21 14:54:39.543 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Service\Implements\ArticleService.cs
+2021-07-21 14:54:39.545 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Service\Messaging\Request\GetPageArticlesRequest.cs
+2021-07-21 14:54:39.551 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\ViewModels\ArticleModel.cs
+2021-07-21 14:54:39.554 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\ViewModels\ArticleTopModel.cs
+2021-07-21 14:54:39.556 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\ViewModels\CategoryModel.cs
+2021-07-21 14:54:39.560 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\ViewModels\CommentModel.cs
+2021-07-21 14:54:39.561 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\ViewModels\Enum.cs
+2021-07-21 14:54:39.563 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\ViewModels\LoginModel.cs
+2021-07-21 14:54:39.979 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\App_Start\RouteConfig.cs
+2021-07-21 14:54:39.982 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Controllers\AboutController.cs
+2021-07-21 14:54:39.984 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Controllers\AccountController.cs
+2021-07-21 14:54:39.985 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Controllers\ArticleController.cs
+2021-07-21 14:54:39.987 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Controllers\BaseController.cs
+2021-07-21 14:54:39.989 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Controllers\CategoryController.cs
+2021-07-21 14:54:39.991 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Controllers\ErrorPageController.cs
+2021-07-21 14:54:39.993 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Controllers\HomeController.cs
+2021-07-21 14:54:39.998 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Controllers\LogController.cs
+2021-07-21 14:54:40.000 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Controllers\MessageController.cs
+2021-07-21 14:54:40.002 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Controllers\SettingController.cs
+2021-07-21 14:54:40.003 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Controllers\UploadController.cs
+2021-07-21 14:54:40.005 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Controllers\ValidateCodeController.cs
+2021-07-21 14:54:40.007 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Core\Authentication\AspFormsAuthentication.cs
+2021-07-21 14:54:40.009 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Core\Extension\StrExt.cs
+2021-07-21 14:54:40.011 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Core\VerifyCode\ValidateCode.cs
+2021-07-21 14:54:40.013 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Filters\FilterConfig.cs
+2021-07-21 14:54:40.015 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Filters\WebHandleErrorAttribute.cs
+2021-07-21 14:54:40.016 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Global.asax.cs
+2021-07-21 14:54:40.018 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Helper\FileHelper.cs
+2021-07-21 14:54:40.412 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\App_Start\RouteConfig.cs
+2021-07-21 14:54:40.414 +08:00 [INF] Diagnostic UA0001 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Global.asax.cs
 2021-07-21 14:54:40.812 +08:00 [INF] Upgrade step Apply fix for UA0001: ASP.NET Core projects should not reference ASP.NET namespaces applied successfully
 2021-07-21 14:54:45.184 +08:00 [INF] Applying upgrade step Apply fix for UA0002: Types should be upgraded
-2021-07-21 14:54:45.406 +08:00 [INF] Diagnostic UA0002 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Controllers\BaseController.cs
-2021-07-21 14:54:45.420 +08:00 [INF] Diagnostic UA0002 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Controllers\AboutController.cs
-2021-07-21 14:54:45.434 +08:00 [INF] Diagnostic UA0002 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Controllers\MessageController.cs
-2021-07-21 14:54:45.445 +08:00 [INF] Diagnostic UA0002 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Controllers\ErrorPageController.cs
-2021-07-21 14:54:45.465 +08:00 [INF] Diagnostic UA0002 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Controllers\UploadController.cs
-2021-07-21 14:54:45.484 +08:00 [INF] Diagnostic UA0002 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Controllers\ValidateCodeController.cs
-2021-07-21 14:54:45.530 +08:00 [INF] Diagnostic UA0002 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Controllers\HomeController.cs
-2021-07-21 14:54:45.556 +08:00 [INF] Diagnostic UA0002 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Controllers\SettingController.cs
-2021-07-21 14:54:45.586 +08:00 [INF] Diagnostic UA0002 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Filters\WebHandleErrorAttribute.cs
-2021-07-21 14:54:45.606 +08:00 [INF] Diagnostic UA0002 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Controllers\LogController.cs
-2021-07-21 14:54:45.628 +08:00 [INF] Diagnostic UA0002 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Controllers\AccountController.cs
-2021-07-21 14:54:45.657 +08:00 [INF] Diagnostic UA0002 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Controllers\CategoryController.cs
-2021-07-21 14:54:45.678 +08:00 [INF] Diagnostic UA0002 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Controllers\ArticleController.cs
+2021-07-21 14:54:45.406 +08:00 [INF] Diagnostic UA0002 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Controllers\BaseController.cs
+2021-07-21 14:54:45.420 +08:00 [INF] Diagnostic UA0002 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Controllers\AboutController.cs
+2021-07-21 14:54:45.434 +08:00 [INF] Diagnostic UA0002 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Controllers\MessageController.cs
+2021-07-21 14:54:45.445 +08:00 [INF] Diagnostic UA0002 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Controllers\ErrorPageController.cs
+2021-07-21 14:54:45.465 +08:00 [INF] Diagnostic UA0002 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Controllers\UploadController.cs
+2021-07-21 14:54:45.484 +08:00 [INF] Diagnostic UA0002 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Controllers\ValidateCodeController.cs
+2021-07-21 14:54:45.530 +08:00 [INF] Diagnostic UA0002 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Controllers\HomeController.cs
+2021-07-21 14:54:45.556 +08:00 [INF] Diagnostic UA0002 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Controllers\SettingController.cs
+2021-07-21 14:54:45.586 +08:00 [INF] Diagnostic UA0002 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Filters\WebHandleErrorAttribute.cs
+2021-07-21 14:54:45.606 +08:00 [INF] Diagnostic UA0002 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Controllers\LogController.cs
+2021-07-21 14:54:45.628 +08:00 [INF] Diagnostic UA0002 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Controllers\AccountController.cs
+2021-07-21 14:54:45.657 +08:00 [INF] Diagnostic UA0002 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Controllers\CategoryController.cs
+2021-07-21 14:54:45.678 +08:00 [INF] Diagnostic UA0002 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Controllers\ArticleController.cs
 2021-07-21 14:54:46.090 +08:00 [INF] Upgrade step Apply fix for UA0002: Types should be upgraded applied successfully
 2021-07-21 14:54:49.432 +08:00 [INF] Applying upgrade step Apply fix for UA0005: Do not use HttpContext.Current
-2021-07-21 14:54:49.610 +08:00 [INF] Diagnostic UA0005 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Helper\WebHelper.cs
-2021-07-21 14:54:49.623 +08:00 [INF] Diagnostic UA0005 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Configs\ConfigHelper.cs
-2021-07-21 14:54:49.644 +08:00 [INF] Diagnostic UA0005 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Core\Email\SmtpService.cs
-2021-07-21 14:54:49.664 +08:00 [INF] Diagnostic UA0005 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Helper\FileHelper.cs
-2021-07-21 14:54:50.075 +08:00 [INF] Diagnostic UA0005 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Configs\ConfigHelper.cs
-2021-07-21 14:54:50.085 +08:00 [INF] Diagnostic UA0005 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Helper\WebHelper.cs
-2021-07-21 14:54:50.095 +08:00 [INF] Diagnostic UA0005 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Helper\FileHelper.cs
-2021-07-21 14:54:50.522 +08:00 [INF] Diagnostic UA0005 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Configs\ConfigHelper.cs
-2021-07-21 14:54:50.532 +08:00 [INF] Diagnostic UA0005 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Helper\WebHelper.cs
-2021-07-21 14:54:50.948 +08:00 [INF] Diagnostic UA0005 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Helper\WebHelper.cs
+2021-07-21 14:54:49.610 +08:00 [INF] Diagnostic UA0005 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Helper\WebHelper.cs
+2021-07-21 14:54:49.623 +08:00 [INF] Diagnostic UA0005 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Configs\ConfigHelper.cs
+2021-07-21 14:54:49.644 +08:00 [INF] Diagnostic UA0005 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Core\Email\SmtpService.cs
+2021-07-21 14:54:49.664 +08:00 [INF] Diagnostic UA0005 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Helper\FileHelper.cs
+2021-07-21 14:54:50.075 +08:00 [INF] Diagnostic UA0005 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Configs\ConfigHelper.cs
+2021-07-21 14:54:50.085 +08:00 [INF] Diagnostic UA0005 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Helper\WebHelper.cs
+2021-07-21 14:54:50.095 +08:00 [INF] Diagnostic UA0005 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Helper\FileHelper.cs
+2021-07-21 14:54:50.522 +08:00 [INF] Diagnostic UA0005 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Configs\ConfigHelper.cs
+2021-07-21 14:54:50.532 +08:00 [INF] Diagnostic UA0005 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Helper\WebHelper.cs
+2021-07-21 14:54:50.948 +08:00 [INF] Diagnostic UA0005 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Helper\WebHelper.cs
 2021-07-21 14:54:51.349 +08:00 [INF] Upgrade step Apply fix for UA0005: Do not use HttpContext.Current applied successfully
 2021-07-21 14:54:57.936 +08:00 [INF] Applying upgrade step Apply fix for UA0010: Attributes should be upgraded
-2021-07-21 14:54:57.956 +08:00 [INF] Diagnostic UA0010 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Controllers\BaseController.cs
-2021-07-21 14:54:57.963 +08:00 [INF] Diagnostic UA0010 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Controllers\ArticleController.cs
-2021-07-21 14:54:57.966 +08:00 [INF] Diagnostic UA0010 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Controllers\HomeController.cs
-2021-07-21 14:54:58.375 +08:00 [INF] Diagnostic UA0010 fixed in D:\mynetcoreproject\NTBlogMVC\Beginner.Blog\Controllers\ArticleController.cs
+2021-07-21 14:54:57.956 +08:00 [INF] Diagnostic UA0010 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Controllers\BaseController.cs
+2021-07-21 14:54:57.963 +08:00 [INF] Diagnostic UA0010 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Controllers\ArticleController.cs
+2021-07-21 14:54:57.966 +08:00 [INF] Diagnostic UA0010 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Controllers\HomeController.cs
+2021-07-21 14:54:58.375 +08:00 [INF] Diagnostic UA0010 fixed in D:\mynetcoreproject\NTBlogMVC\NTBlogWeb\Controllers\ArticleController.cs
 2021-07-21 14:54:58.777 +08:00 [INF] Applying upgrade step Update source code
 2021-07-21 14:54:59.451 +08:00 [INF] Upgrade step Update source code applied successfully
 2021-07-21 14:54:59.451 +08:00 [INF] Upgrade step Apply fix for UA0010: Attributes should be upgraded applied successfully

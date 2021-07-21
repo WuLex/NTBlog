@@ -1,6 +1,6 @@
-﻿using NTBlog.Core.Engines;
-using NTBlog.Core.Logging;
-using NTBlog.Helper;
+﻿using NTBlogWeb.Core.Engines;
+using NTBlogWeb.Core.Logging;
+using NTBlogWeb.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Web;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace NTBlog.Filters
+namespace NTBlogWeb.Filters
 {
     /// <summary>
     /// 全局错误处理类

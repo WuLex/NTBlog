@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace NTBlog.Core
+namespace NTBlogWeb.Core
 {
     /// <summary>
     /// 资源库接口

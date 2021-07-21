@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 
-namespace NTBlog.Core.Authentication
+namespace NTBlogWeb.Core.Authentication
 {
     public class AspFormsAuthentication : IFormsAuthentication
     {

@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Text;
 
-namespace NTBlog.Core.Logging
+namespace NTBlogWeb.Core.Logging
 {
     public class Logger : ILogger
     {

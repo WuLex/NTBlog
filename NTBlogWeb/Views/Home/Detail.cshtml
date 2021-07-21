@@ -1,4 +1,4 @@
-﻿@model Beginner.Blog.Models.Article
+﻿@model NTBlogWeb.Models.Article
 @{
     ViewBag.Title = Model.Title;
     ViewBag.Keywords = Model.MetaKeywords;
@@ -6,7 +6,7 @@
     ViewBag.Author = Model.Author;
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
 
-    var comments = ViewBag.CommentList as IList<Beginner.Blog.Models.Comment>;
+    var comments = ViewBag.CommentList as IList<NTBlogWeb.Models.Comment>;
 }
 <div class="blog-detail-main">
     <blockquote class="layui-elem-quote">

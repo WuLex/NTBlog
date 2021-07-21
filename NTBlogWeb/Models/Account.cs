@@ -1,10 +1,10 @@
-﻿using NTBlog.Core;
+﻿using NTBlogWeb.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace NTBlog.Models
+namespace NTBlogWeb.Models
 {
     public class Account : BaseEntity
     {

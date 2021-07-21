@@ -1,6 +1,6 @@
 ﻿using System.Data.Entity.ModelConfiguration;
 
-namespace NTBlog.Core
+namespace NTBlogWeb.Core
 {
     /// <summary>
     /// Mapping base

@@ -6,7 +6,7 @@ using System.Drawing.Drawing2D;
 using System.IO;
 using System.Web;
 
-namespace NTBlog.Core.VerifyCode
+namespace NTBlogWeb.Core.VerifyCode
 {
     /// <summary>
     /// 生成验证码的类
