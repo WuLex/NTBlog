@@ -20,3 +20,9 @@ E:\mynetcoreProject\NTBlog\NTBlogWeb\obj\Debug\net5.0\NTBlogWeb.csproj.CoreCompi
 E:\mynetcoreProject\NTBlog\NTBlogWeb\obj\Debug\net5.0\NTBlogWeb.MvcApplicationPartsAssemblyInfo.cache
 E:\mynetcoreProject\NTBlog\NTBlogWeb\obj\Debug\net5.0\NTBlogWeb.RazorAssemblyInfo.cache
 E:\mynetcoreProject\NTBlog\NTBlogWeb\obj\Debug\net5.0\NTBlogWeb.RazorAssemblyInfo.cs
+E:\mynetcoreProject\NTBlog\NTBlogWeb\obj\Debug\net5.0\staticwebassets\NTBlogWeb.StaticWebAssets.Manifest.cache
+E:\mynetcoreProject\NTBlog\NTBlogWeb\obj\Debug\net5.0\staticwebassets\NTBlogWeb.StaticWebAssets.xml
+E:\mynetcoreProject\NTBlog\NTBlogWeb\obj\Debug\net5.0\scopedcss\bundle\NTBlogWeb.styles.css
+E:\mynetcoreProject\NTBlog\NTBlogWeb\obj\Debug\net5.0\NTBlogWeb.TagHelpers.input.cache
+E:\mynetcoreProject\NTBlog\NTBlogWeb\obj\Debug\net5.0\NTBlogWeb.TagHelpers.output.cache
+E:\mynetcoreProject\NTBlog\NTBlogWeb\obj\Debug\net5.0\NTBlogWeb.RazorCoreGenerate.cache

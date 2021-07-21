@@ -3,10 +3,11 @@ using System.Data.Common;
 //using System.Data.Entity.Infrastructure.Interception;
 using System.Diagnostics;
 using Microsoft.EntityFrameworkCore.Diagnostics;
+using Z.EntityFramework.Extensions;
 
 namespace NTBlogWeb.Core.Interceptor
 {
-    public class EfInterceptorLogging : DbCommandInterceptor
+    public class EfInterceptorLogging : Z.EntityFramework.Extensions.DbCommandInterceptor
     {
         private ILogger _logger = new Logger();
         private readonly Stopwatch _stopwatch = new Stopwatch();
@@ -20,9 +21,9 @@ namespace NTBlogWeb.Core.Interceptor
         public override void ScalarExecuted(DbCommand command, DbCommandInterceptionContext<object> interceptionContext)
         {
             _stopwatch.Stop();
-            if (interceptionContext.Exception != null)
+            if (interceptionContext.EventData != null)
             {
-                _logger.Error(interceptionContext.Exception, "Error executing command: {0}", command.CommandText);
+                _logger.Error(interceptionContext.EventData.ToString(), "Error executing command: {0}", command.CommandText);
             }
             else
             {
@@ -40,9 +41,9 @@ namespace NTBlogWeb.Core.Interceptor
         public override void NonQueryExecuted(DbCommand command, DbCommandInterceptionContext<int> interceptionContext)
         {
             _stopwatch.Stop();
-            if (interceptionContext.Exception != null)
+            if (interceptionContext.EventData != null)
             {
-                _logger.Error(interceptionContext.Exception, "Error executing command: {0}", command.CommandText);
+                _logger.Error(interceptionContext.EventData.ToString(), "Error executing command: {0}", command.CommandText);
             }
             else
             {
@@ -59,9 +60,9 @@ namespace NTBlogWeb.Core.Interceptor
         public override void ReaderExecuted(DbCommand command, DbCommandInterceptionContext<DbDataReader> interceptionContext)
         {
             _stopwatch.Stop();
-            if (interceptionContext.Exception != null)
+            if (interceptionContext.EventData != null)
             {
-                _logger.Error(interceptionContext.Exception, "Error executing command: {0}", command.CommandText);
+                _logger.Error(interceptionContext.EventData.ToString(), "Error executing command: {0}", command.CommandText);
             }
             else
             {
