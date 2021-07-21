@@ -1,0 +1,16 @@
+D:\mynetcoreproject\NTBlog\NTBlog\obj\Debug\net5.0\NTBlog.csprojAssemblyReference.cache
+D:\mynetcoreproject\NTBlog\NTBlog\obj\Debug\net5.0\NTBlog.GeneratedMSBuildEditorConfig.editorconfig
+D:\mynetcoreproject\NTBlog\NTBlog\obj\Debug\net5.0\NTBlog.AssemblyInfoInputs.cache
+D:\mynetcoreproject\NTBlog\NTBlog\obj\Debug\net5.0\NTBlog.AssemblyInfo.cs
+D:\mynetcoreproject\NTBlog\NTBlog\obj\Debug\net5.0\NTBlog.csproj.CoreCompileInputs.cache
+D:\mynetcoreproject\NTBlog\NTBlog\obj\Debug\net5.0\NTBlog.MvcApplicationPartsAssemblyInfo.cache
+D:\mynetcoreproject\NTBlog\NTBlog\obj\Debug\net5.0\NTBlog.RazorAssemblyInfo.cache
+D:\mynetcoreproject\NTBlog\NTBlog\obj\Debug\net5.0\NTBlog.RazorAssemblyInfo.cs
+D:\mynetcoreproject\AAA\NTBlog\NTBlog\obj\Debug\net5.0\NTBlog.csprojAssemblyReference.cache
+D:\mynetcoreproject\AAA\NTBlog\NTBlog\obj\Debug\net5.0\NTBlog.GeneratedMSBuildEditorConfig.editorconfig
+D:\mynetcoreproject\AAA\NTBlog\NTBlog\obj\Debug\net5.0\NTBlog.AssemblyInfoInputs.cache
+D:\mynetcoreproject\AAA\NTBlog\NTBlog\obj\Debug\net5.0\NTBlog.AssemblyInfo.cs
+D:\mynetcoreproject\AAA\NTBlog\NTBlog\obj\Debug\net5.0\NTBlog.csproj.CoreCompileInputs.cache
+D:\mynetcoreproject\AAA\NTBlog\NTBlog\obj\Debug\net5.0\NTBlog.MvcApplicationPartsAssemblyInfo.cache
+D:\mynetcoreproject\AAA\NTBlog\NTBlog\obj\Debug\net5.0\NTBlog.RazorAssemblyInfo.cache
+D:\mynetcoreproject\AAA\NTBlog\NTBlog\obj\Debug\net5.0\NTBlog.RazorAssemblyInfo.cs

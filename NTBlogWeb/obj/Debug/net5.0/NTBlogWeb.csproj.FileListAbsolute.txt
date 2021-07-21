@@ -1,0 +1,14 @@
+D:\mynetcoreproject\NTBlogWeb\NTBlogWeb\obj\Debug\net5.0\NTBlogWeb.csprojAssemblyReference.cache
+D:\mynetcoreproject\NTBlogWeb\NTBlogWeb\obj\Debug\net5.0\NTBlogWeb.GeneratedMSBuildEditorConfig.editorconfig
+D:\mynetcoreproject\NTBlogWeb\NTBlogWeb\obj\Debug\net5.0\NTBlogWeb.AssemblyInfoInputs.cache
+D:\mynetcoreproject\NTBlogWeb\NTBlogWeb\obj\Debug\net5.0\NTBlogWeb.AssemblyInfo.cs
+D:\mynetcoreproject\NTBlogWeb\NTBlogWeb\obj\Debug\net5.0\NTBlogWeb.csproj.CoreCompileInputs.cache
+D:\mynetcoreproject\NTBlogWeb\NTBlogWeb\obj\Debug\net5.0\NTBlogWeb.MvcApplicationPartsAssemblyInfo.cache
+D:\mynetcoreproject\NTBlogWeb\NTBlogWeb\obj\Debug\net5.0\NTBlogWeb.RazorAssemblyInfo.cache
+D:\mynetcoreproject\NTBlogWeb\NTBlogWeb\obj\Debug\net5.0\NTBlogWeb.RazorAssemblyInfo.cs
+D:\mynetcoreproject\NTBlogWeb\NTBlogWeb\obj\Debug\net5.0\staticwebassets\NTBlogWeb.StaticWebAssets.Manifest.cache
+D:\mynetcoreproject\NTBlogWeb\NTBlogWeb\obj\Debug\net5.0\staticwebassets\NTBlogWeb.StaticWebAssets.xml
+D:\mynetcoreproject\NTBlogWeb\NTBlogWeb\obj\Debug\net5.0\scopedcss\bundle\NTBlogWeb.styles.css
+D:\mynetcoreproject\NTBlogWeb\NTBlogWeb\obj\Debug\net5.0\NTBlogWeb.TagHelpers.input.cache
+D:\mynetcoreproject\NTBlogWeb\NTBlogWeb\obj\Debug\net5.0\NTBlogWeb.TagHelpers.output.cache
+D:\mynetcoreproject\NTBlogWeb\NTBlogWeb\obj\Debug\net5.0\NTBlogWeb.RazorCoreGenerate.cache

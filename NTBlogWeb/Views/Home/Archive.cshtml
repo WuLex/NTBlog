@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "文章归档";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<div style="margin: 2em 0 0; background-color: #FFFFFF;">
+    <blockquote class="layui-elem-quote">“文章归档”还没做啊。 </blockquote>
+</div>
+
+@section scripts{
+    <script>
+        layui.use(['jquery'], function () {
+            var $ = layui.jquery;
+
+
+            var $item = $('.blog-header .layui-nav > .layui-nav-item');
+            $item.removeClass('layui-this');
+
+            $item.each(function (i) {
+                if (i == 1 || i == 4)
+                    $(this).addClass('layui-this');
+            });
+
+        });
+    </script>
+}

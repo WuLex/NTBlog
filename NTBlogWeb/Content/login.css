@@ -1,0 +1,89 @@
+﻿.blog-login-bg {
+    background: url(../Images/login-bg-1.jpg) no-repeat center center fixed;
+}
+
+.blog-login-box {
+    width: 450px;
+    height: 330px;
+    margin: 10% auto;
+    background-color: rgba(255, 255, 255, 0.407843);
+    border-radius: 10px;
+    color: aliceblue;
+}
+
+    .blog-login-box header {
+        height: 39px;
+        padding: 10px;
+        border-bottom: 1px solid aliceblue;
+    }
+
+        .blog-login-box header h1 {
+            text-align: center;
+            font-size: 25px;
+            line-height: 40px;
+        }
+
+    .blog-login-box .blog-login-main {
+        height: 185px;
+        padding: 30px 90px 0;
+    }
+
+.blog-login-main .layui-form-item {
+    position: relative;
+}
+
+    .blog-login-main .layui-form-item .blog-login-icon {
+        position: absolute;
+        color: #cccccc;
+        top: 10px;
+        left: 10px;
+    }
+
+    .blog-login-main .layui-form-item input {
+        padding-left: 34px;
+    }
+
+.blog-login-box footer {
+    height: 35px;
+    padding: 10px 10px 0 10px;
+}
+
+    .blog-login-box footer p {
+        line-height: 35px;
+        text-align: center;
+    }
+
+.blog-pull-left {
+    float: left !important;
+}
+
+.blog-pull-right {
+    float: right !important;
+}
+
+.blog-clear {
+    clear: both;
+}
+
+.blog-login-remember {
+    line-height: 38px;
+}
+
+    .blog-login-remember .layui-form-switch {
+        margin-top: 0px;
+    }
+
+.blog-login-code-box {
+    position: relative;
+    padding:10px;
+}
+.blog-login-code-box input{
+    position: absolute;
+    width: 100px;
+}
+.blog-login-code-box img{
+    cursor: pointer;
+    position: absolute;
+    left: 115px;
+    height: 38px;
+}

@@ -1,0 +1,66 @@
+﻿@model Beginner.Blog.Configs.Models.Setting
+@{
+    ViewBag.Title = "系统设置";
+    Layout = "~/Views/Shared/_ManageLayoutPage.cshtml";
+}
+@section styles{
+    <style>
+        .blog-manage-form .layui-form-label {
+            width: 115px;
+        }
+
+        .blog-manage-form .layui-input-block {
+            margin-left: 115px;
+        }
+    </style>
+}
+<fieldset class="layui-elem-field layui-field-title">
+    <legend>系统设置</legend>
+</fieldset>
+
+@using (Html.BeginForm("UpdateBasicSetting", "Setting", FormMethod.Post, new { @class = "layui-form blog-manage-form" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="layui-form-item">
+        <label class="layui-form-label">站点名称</label>
+        <div class="layui-input-block">
+            <input type="text" name="websiteName" lay-verify="required" placeholder="请输入站点名称" value="@Model.WebsiteName" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">后台分页大小</label>
+        <div class="layui-input-block">
+            <input type="number" name="managePageSize" lay-verify="number" autocomplete="off" value="@Model.ManagePageSize" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">前台分页大小</label>
+        <div class="layui-input-block">
+            <input type="number" name="websitePageSize" lay-verify="number" autocomplete="off" value="@Model.WebsitePageSize" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">评论分页大小</label>
+        <div class="layui-input-block">
+            <input type="number" name="commentPageSize" lay-verify="number" autocomplete="off" value="@Model.CommentPageSize" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="save">保存</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+}
+
+@section scripts{
+    <script>
+        layui.use(['form','jquery'], function () {
+            var form = layui.form()
+            , $ = layui.jquery;
+
+            var $item = $('.layui-nav > .layui-nav-item');
+            $item.removeClass('layui-this').eq(5).addClass('layui-this');
+        });
+    </script>
+}

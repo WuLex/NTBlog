@@ -1,0 +1,147 @@
+﻿@model Beginner.Blog.Core.PagedList<Beginner.Blog.Models.Article>
+@{
+    ViewBag.Title = "所有文章";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+    var categories = ViewBag.Categories as IList<Beginner.Blog.Models.Category>;
+    var archives = ViewBag.Archives as IList<Beginner.Blog.Models.Archive>;
+    var tops = ViewBag.Top as List<Beginner.Blog.ViewModels.ArticleTopModel>;
+}
+
+<div class="blog-nav">
+    <nav>
+        <blockquote class="layui-elem-quote">搜索</blockquote>
+        <div style="padding:0 5px;">
+            <form action="@Url.Action("Search","Home")">
+                <input type="text" name="keywork" required lay-verify="required" placeholder="输入关键字按回车进行搜索.." autocomplete="off" class="layui-input">
+            </form>
+        </div>
+    </nav>
+    <nav>
+        <blockquote class="layui-elem-quote" style="margin-bottom:0;">分类</blockquote>
+        <ul>
+            @if (categories != null && categories.Count > 0)
+            {
+                foreach (var item in categories)
+                {
+                    <li>
+                        <a href="@Url.Action("CategorySearch","Home",new { categoryName = item.CategoryName})">@item.CategoryName</a>
+                        <aside>@item.Articles.Where(p => !p.IsDel && p.State == (int)Beginner.Blog.ViewModels.ArticleStatus.Normal).Count()</aside>
+                    </li>
+                }
+            }
+        </ul>
+    </nav>
+    <nav>
+        <blockquote class="layui-elem-quote" style="margin-bottom:0;">归档</blockquote>
+        <ul>
+            @if (archives != null && archives.Count > 0)
+            {
+                foreach (var item in archives)
+                {
+                    <li>
+                        <a href="@Url.Action("Archive","Home",new { keywork=item.ArchiveDate})">@item.ArchiveDate</a><span style="margin-left:10px;">(@item.Count)</span>
+                    </li>
+                }
+            }
+        </ul>
+    </nav>
+    <nav>
+        <blockquote class="layui-elem-quote" style="margin-bottom:0;">阅读排行</blockquote>
+        <ul>
+            @if (tops != null && tops.Count > 0)
+            {
+                foreach (var item in tops)
+                {
+                    <li>
+                        <a title="@item.Title" href="@Url.Action("Detail", "Home", new { articleId = item.Id })">@item.Title</a>
+                    </li>
+                }
+            }
+        </ul>
+    </nav>
+
+</div>
+
+<div class="blog-main">
+    <ul id="list">
+        @if (Model.Items != null && Model.Items.Count != 0)
+        {
+            foreach (var item in Model.Items)
+            {
+                <li>
+                    <h2>
+                        @{
+                            var top = item.IsTop ? "<span style=\"color:#009688;\">[置顶]</span> " : "";
+                        }
+                        <a title="@item.Title" href="@Url.Action("Detail", "Home", new { articleId = item.Id })">@Html.Raw(top)@item.Title</a>
+                    </h2>
+                    <span class="blog-main-item-time">@item.CreateTime.ToString("yyyy-MM-dd HH:mm")</span>
+                </li>
+                                }
+                            }
+                            else
+                            {
+                                <li>
+                                    <h2>
+                                        无数据
+                                    </h2>
+                                </li>
+                            }
+    </ul>
+</div>
+<div class="clearfix"></div>
+@section scripts{
+    <script>
+
+        layui.config({
+            base: '/Scripts/' //自定义模块的目录
+        });
+
+        layui.use(['highlight', 'jquery', 'flow'], function () {
+            var highlight = layui.highlight
+            , $ = layui.jquery
+            , flow = layui.flow;
+
+            var keywork = '@ViewBag.Highlight'
+            if (keywork !== '')
+                highlight.handler(keywork);
+
+            var $item = $('.blog-header .layui-nav > .layui-nav-item');
+            $item.removeClass('layui-this');
+
+            $item.each(function (i) {
+                if (i == 0 || i == 2)
+                    $(this).addClass('layui-this');
+            });
+
+            @{
+                var pages = Model.TotalPages;
+                var index = Model.CurrentPage;
+            }
+            if(@Model.TotalPages > 1){
+                flow.load({
+                    elem: '#list' //指定列表容器
+                    , isAuto: false
+                    , done: function (page, next) { //到达临界点（默认滚动触发），触发下一页
+                        var lis = [];
+                        var p = location.search!==''?location.search:location.pathname;
+                        //以Ajax请求为例，请求下一页数据（注意：page是从2开始返回）
+                        $.getJSON('@Url.Action("AJaxLoadList","Home")?page=' + page+'&p='+p, function (res) {
+                            //假设你的列表返回在data集合中
+                            layui.each(res.data, function (index, item) {
+                                lis.push('<li> <h2> <a title="' + item.Title + '" href="' + location.origin + '/detail-' + item.Id + '.html">' +
+                                    item.Title + '</a></h2><span class="blog-main-item-time">' + item.CreateTime + '</span></li>');
+                            });
+                            //执行下一页渲染，如果不存在数据，则告诉flow已经没有更多
+                            next(lis.join(''), res.page === page ? 0 : page);
+                        });
+                    }
+                });
+            }
+        });
+
+
+
+    </script>
+
+}

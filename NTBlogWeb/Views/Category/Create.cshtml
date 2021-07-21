@@ -1,0 +1,89 @@
+﻿@{
+    ViewBag.Title = "创建分类";
+    Layout = "~/Views/Shared/_ManageLayoutPage.cshtml";
+}
+
+<blockquote class="layui-elem-quote blog-manage-breadcrumb">
+    <span class="layui-breadcrumb">
+        <a href="@Url.Action("List","Category")">分类管理</a>
+        <a><cite>创建分类</cite></a>
+    </span>
+</blockquote>
+@if (ViewBag.IsError!=null && ViewBag.IsError)
+{
+    <div style="background-color:#f2dede; border-color:#ebccd1; color:#a94442; padding:15px; border-radius:5px; position:relative;">
+        <p><strong>错误信息：</strong>分类名称过长，请控制在15个字内！</p>
+        <a href="javascript:;" style="position: absolute;right: 18px; top: 17px;"><i class="layui-icon">&#x1006;</i></a>
+    </div>
+}
+<fieldset class="layui-elem-field layui-field-title">
+    <legend>创建分类</legend>
+</fieldset>
+
+@using (Html.BeginForm("Create", "Category", FormMethod.Post, new { @class = "layui-form blog-manage-form" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="layui-form-item">
+        <label class="layui-form-label">分类名称</label>
+        <div class="layui-input-block">
+            <input type="text" name="categoryName" lay-verify="categoryName" autocomplete="off" placeholder="请输入分类名称..." class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">排序值</label>
+        <div class="layui-input-block">
+            <input type="number" name="sort" lay-verify="number" value="0" min="0" autocomplete="off" class="layui-input" />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">是否置顶</label>
+        <div class="layui-input-block">
+            <input type="checkbox" name="isTop" lay-skin="switch" value="true" title="是否置顶" />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit>立即保存</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+}
+@section scripts{
+    <script>
+        layui.use(['form', 'layer'], function () {
+            var form = layui.form()
+            , layer = layui.layer
+            , $ = layui.jquery;
+
+            //自定义验证规则
+            form.verify({
+                categoryName: function (value) {
+                    if (value === '') {
+                        return '分类名称不能为空！';
+                    }
+                    if (value.length > 15) {
+                        return '名称太长啦，请控制在15个字内';
+                    }
+                    var message = '';
+                    $.ajax({
+                        async: false, //改为同步请求
+                        url: '@Url.Action("CheckName", "Category")',
+                        data: {
+                            name: value
+                        },
+                        dataType: 'json',
+                        type: 'get',
+                        success: function (result) {
+                            if (result.success)
+                                message = result.message;
+                        }
+                    });
+                    if (message !== '')
+                        return message;
+                }
+            });
+            var $item = $('.layui-nav > .layui-nav-item');
+            $item.removeClass('layui-this').eq(2).addClass('layui-this');
+        });
+    </script>
+}

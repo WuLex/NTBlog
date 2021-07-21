@@ -1,0 +1,164 @@
+﻿@model Beginner.Blog.Models.Article
+@{
+    ViewBag.Title = "编辑文章";
+    Layout = "~/Views/Shared/_ManageLayoutPage.cshtml";
+    var categories = ViewBag.Categories as IList<Beginner.Blog.Models.Category>;
+}
+<blockquote class="layui-elem-quote blog-manage-breadcrumb">
+    <span class="layui-breadcrumb">
+        <a href="@Url.Action("List","Article")">文章管理</a>
+        <a><cite>编辑文章</cite></a>
+    </span>
+</blockquote>
+<fieldset class="layui-elem-field layui-field-title">
+    <legend>编辑文章</legend>
+</fieldset>
+
+@using (Html.BeginForm("Edit", "Article", FormMethod.Post, new { @class = "layui-form blog-manage-form" }))
+{
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="id" value="@Model.Id" />
+    <input type="hidden" name="state" value="@Model.State" />
+    <div class="layui-form-item">
+        <label class="layui-form-label">文章分类</label>
+        <div class="layui-input-block">
+            <select name="categoryId" required lay-verify="category">
+                <option value=""></option>
+                @if (categories != null && categories.Count > 0)
+                {
+                    foreach (var item in categories)
+                    {
+                        var selected = item.Id == Model.CategoryId ? "selected" : "";
+                        <option value="@item.Id" @selected>@item.CategoryName</option>
+                    }
+                }
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">标题</label>
+        <div class="layui-input-block">
+            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="这里输入文章的标题，注意啦，别做标题党了..." class="layui-input" value="@Model.Title" />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">作者</label>
+        <div class="layui-input-block">
+            <input type="text" name="author" lay-verify="author" placeholder="这里输入文章作者哦..." autocomplete="off" class="layui-input" value="@Model.Author" />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">标签</label>
+        <div class="layui-input-block">
+            <input type="text" name="tags" lay-verify="tags" placeholder="这里是输入标签的呢，如果有多个标签的话，就用逗号分割开吧，记得她是英文逗号才有效的呢..." autocomplete="off" class="layui-input" value="@Model.Tags" />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">浏览量</label>
+        <div class="layui-input-block">
+            <input type="number" name="hits" lay-verify="number" value="@Model.Hits" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">排序值</label>
+        <div class="layui-input-block">
+            <input type="number" name="sort" lay-verify="number" value="@Model.Sort" min="0" placeholder="这里输入的数值越高，排序的位置就越前哦.." autocomplete="off" class="layui-input" />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">置顶</label>
+        <div class="layui-input-block">
+            @{
+                var isTop = Model.IsTop ? "checked" : "";
+            }
+            <input type="checkbox" name="isTop" value="true" lay-skin="switch" @isTop title="置顶" />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">SEO标题</label>
+        <div class="layui-input-block">
+            <input type="text" name="metaTitle" placeholder="这里写文章的SEO标题..." value="@Model.MetaTitle" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">SEO关键字</label>
+        <div class="layui-input-block">
+            <input type="text" name="metaKeywords" placeholder="这里写文章的SEO关键字..." value="@Model.MetaKeywords" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">SEO描述</label>
+        <div class="layui-input-block">
+            <input type="text" name="metaDescription" placeholder="这里写文章SEO描述..." value="@Model.MetaDescription" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">内容</label>
+        <div class="layui-input-block">
+            <textarea class="layui-textarea layui-hide" required lay-verify="content" id="content" name="content">@Model.Content</textarea>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button type="submit" lay-submit="" class="layui-btn" lay-filter="publish">发布</button>
+            <button type="submit" lay-submit="" class="layui-btn" lay-filter="draft">存草稿</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+                }
+@section scripts{
+    <script>
+        layui.use(['form', 'layedit', 'jquery'], function () {
+            var form = layui.form()
+            , layer = layui.layer
+            , layedit = layui.layedit
+            , $ = layui.jquery;
+
+            //自定义验证规则
+            form.verify({
+                title: function (value) {
+                    if (value.length < 5) return '标题至少也得5个字符吧';
+                    if (value.length > 50) return '标题写得太多啦，不要超过50个字符好吗？';
+                },
+                category: function (value) {
+                    if (value === '') return '请选择分类啦^_^';
+                },
+                author: function (value) {
+                    if (value === '') return '至少得告诉人家，这篇文章是谁写的吧？';
+                },
+                tags: function (value) {
+                    if (value === '') return '给她贴个标签呗，可以用逗号分割哦。';
+                },
+                content: function (value) {
+                    if (value === '') return '既然写文章、发博客，总得写点什么吧？';
+                    if (value.length <= 30) return '你写的字数太少啦，起码也得写上30个字符吧。';
+                }
+
+            });
+
+            //创建一个编辑器
+            layedit.build('content', {
+                height: 600,
+                uploadImage: {
+                    url: '@Url.Action("UploadImage", "Upload")'
+                }
+            });
+
+            //监听提交
+            form.on('submit(draft)', function (data) {
+                //将状态设置为2
+                $('form input[name=state]').val('2');
+                return true;
+            });
+            
+            form.on('submit(publish)', function (data) {
+                //将状态设置为2
+                $('form input[name=state]').val('1');
+                return true;
+            });
+            var $item = $('.layui-nav > .layui-nav-item');
+            $item.removeClass('layui-this').eq(1).addClass('layui-this');
+
+        });
+    </script>
+}

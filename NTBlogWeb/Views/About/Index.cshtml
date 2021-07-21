@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "关于我";
+    Layout = "~/Views/Shared/_ManageLayoutPage.cshtml";
+}
+<fieldset class="layui-elem-field layui-field-title">
+    <legend>关于我</legend>
+</fieldset>
+
+@using (Html.BeginForm("Save", "About", FormMethod.Post, new { @class = "layui-form blog-manage-form" }))
+{
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="state" value="1" />    
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">关于我</label>
+        <div class="layui-input-block">
+            <textarea class="layui-textarea layui-hide" required lay-verify="content" id="content" name="content"></textarea>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button type="submit" lay-submit="" class="layui-btn">保存</button>
+        </div>
+    </div>
+}
+@section scripts{
+    <script>
+        layui.use(['form', 'layedit', 'jquery'], function () {
+            var form = layui.form()
+            , layer = layui.layer
+            , layedit = layui.layedit
+            , $ = layui.jquery;
+
+            //自定义验证规则
+            form.verify({
+                content: function (value) {
+                    if (value === '') return '既然写文章、发博客，总得写点什么吧？';
+                    if (value.length <= 30) return '你写的字数太少啦，起码也得写上30个字符吧。';
+                }
+
+            });
+
+            //创建一个编辑器
+            layedit.build('content', {
+                uploadImage: {
+                    url: '@Url.Action("UploadImage", "Upload")'
+                },
+                height:600
+            });
+
+            //监听提交
+            form.on('submit(draft)', function (data) {
+
+                //layer.alert(JSON.stringify(data.field), {
+                //    title: '最终的提交信息'
+                //})
+                //将状态设置为2
+                $('form input[name=state]').val('2');
+                return true;
+            });
+
+
+        });
+    </script>
+}

@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="keywords" content="@ViewBag.Keywords" />
+    <meta name="description" content="@ViewBag.Description" />
+    <meta name="author" content="@ViewBag.Author" />
+    <title>@ViewBag.Title - 博客</title>
+    <link href="~/Plugins/layui/css/layui.css" rel="stylesheet" />
+    <link href="~/Content/main.css" rel="stylesheet" />
+</head>
+<body class="blog-body">
+    <div class="layui-header blog-header">
+        <div class="blog-container">
+            <div class="blog-header-title">
+                @{
+                    var name = "初学者";
+                    var setting = Beginner.Blog.Configs.ConfigHelper.GetBasicConfig();
+                    if (setting != null)
+                    {
+                        name = setting.WebsiteName;
+                    }
+                }
+                <p><a href="/" style="color:#ffffff;">@name</a></p>
+            </div>
+            <div class="blog-header-menu">
+                <div class="blog-header-menu-icon">
+                    <i class="layui-icon">&#xe60f;</i>
+                </div>
+                <ul class="layui-nav layui-nav-tree blog-header-menu-nav">
+                    <li class="layui-nav-item"><a href="@Url.Action("List","Home")">首页</a></li>
+                    @*<li class="layui-nav-item"><a href="@Url.Action("Archive", "Home")">文章归档</a></li>*@
+                    <li class="layui-nav-item"><a href="@Url.Action("About","Home")">关于我</a></li>
+                </ul>
+            </div>
+            <ul class="layui-nav blog-header-nav">
+                <li class="layui-nav-item"><a href="@Url.Action("List","Home")">首页</a></li>
+                @*<li class="layui-nav-item"><a href="@Url.Action("Archive", "Home")">文章归档</a></li>*@
+                <li class="layui-nav-item"><a href="@Url.Action("About","Home")">关于我</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="layui-main blog-container">
+        @RenderBody()
+    </div>
+    <div class="layui-footer">
+        <div class="blog-footer-main">
+            <p>Beginner © www.zhengjinfan.cn</p>
+        </div>
+    </div>
+    <script src="~/Plugins/layui/layui.js"></script>
+    <script>
+
+        layui.use(['util', 'jquery'], function () {
+            var util = layui.util, $ = layui.jquery;
+
+            util.fixbar();
+
+            $('.blog-header-menu-icon').on('click', function () {
+                var $nav = $('.blog-header-menu-nav');
+                $nav.toggle();
+            });
+        });
+
+
+    </script>
+    @RenderSection("scripts", false)
+</body>
+</html>

@@ -1,0 +1,136 @@
+﻿@model Beginner.Blog.Models.Article
+@{
+    ViewBag.Title = Model.Title;
+    ViewBag.Keywords = Model.MetaKeywords;
+    ViewBag.Description = Model.MetaDescription;
+    ViewBag.Author = Model.Author;
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+
+    var comments = ViewBag.CommentList as IList<Beginner.Blog.Models.Comment>;
+}
+<div class="blog-detail-main">
+    <blockquote class="layui-elem-quote">
+        <h1>@Model.Title</h1>
+        <p class="blog-time">
+            <span>
+                发表时间：<cite>@Model.CreateTime.ToString("yyyy-MM-dd HH:mm")</cite>
+            </span>&nbsp;
+            <a href="#comment-m">
+                <span>
+                    <cite>@Model.Comments.Count</cite> 评
+                </span>
+            </a>&nbsp;
+            <span>
+                <cite>@Model.Hits</cite> 阅
+            </span>
+        </p>
+    </blockquote>
+    <article class="blog-detail-content">
+        @Html.Raw(Model.Content)
+    </article>
+
+    <blockquote class="layui-elem-quote layui-quote-nm">
+        <p style="margin-bottom:8px;">
+            分类：
+            <a href="@Url.Action("CategorySearch","Home",new { categoryName=Html.Encode(Model.Category.CategoryName)})">@Model.Category.CategoryName</a>
+        </p>
+        <p>
+            标签：
+            @{
+                string[] tags = null;
+
+                if (!string.IsNullOrEmpty(Model.Tags))
+                {
+                    tags = Model.Tags.Split(',');
+                    <span>
+                        @for (int i = 0; i < tags.Length; i++)
+                {
+                            <a href="@Url.Action("Tag", "Home", new { tagName = Html.Encode(tags[i]) })">@tags[i]</a>
+                        }
+                    </span>
+                }
+            }
+        </p>
+    </blockquote>
+    <blockquote class="layui-elem-quote" id="comment-m">查看评论</blockquote>
+    <div class="blog-detail-comment-box">
+        @using (Html.BeginForm("Comment", "Home", FormMethod.Post, new { @class = "layui-form layui-form-pane" }))
+        {
+            @Html.AntiForgeryToken();
+            <input type="hidden" name="articleId" value="@Model.Id" />
+            <div class="layui-form-item">
+                <label class="layui-form-label">昵称</label>
+                <div class="layui-input-block">
+                    <input type="text" name="nickname" required
+                           lay-verify="nickname" placeholder="这里留下你的大名哦 ^_^ " value="@ViewBag.NickName" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">电子邮箱</label>
+                <div class="layui-input-block">
+                    <input type="text" name="email" lay-verify="email" placeholder="这里留下你的邮箱哦，方便我们能联系到你吖 " value="@ViewBag.Email" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">评论内容</label>
+                <div class="layui-input-block">
+                    <textarea id="comment-text" name="commentText" required lay-verify="commentText" style="display: none;"></textarea>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <button class="layui-btn" lay-submit lay-filter="formDemo" id="comment-submit">发表</button>
+            </div>
+        }
+        <ul class="blog-detail-comment-list">
+            @if (comments != null && comments.Count > 0)
+            {
+                foreach (var item in comments)
+                {
+                    <li>
+                        <div class="blog-detail-comment-user">
+                            <span class="blog-detail-comment-user-nickname">@item.Nickname</span>
+                            <span class="blog-detail-comment-user-time">@item.CreateTime.ToString("yyyy-MM-dd HH:mm")</span>
+                        </div>
+                        <div class="blog-detail-comment-content">
+                            @Html.Raw(item.CommentText)
+                        </div>
+                    </li>
+                }
+            }
+        </ul>
+    </div>
+</div>
+@section scripts{
+    <script>
+        layui.use(['layedit', 'jquery', 'form'], function () {
+            var layedit = layui.layedit
+                , $ = layui.jquery
+                , form = layui.form();
+            //建立编辑器
+            var layeditIndex = layedit.build('comment-text', {
+                tool: ['strong', 'italic', 'underline', '|', 'left', 'center', 'right', 'face'],
+                height: 180
+            });
+
+            //自定义验证规则
+            form.verify({
+                nickname: function (value) {
+                    if (value === '') return '少侠，请留名^_^';
+                },
+                email: function (value) {
+                    if (value === '') return '少侠，请留下联系方式吧^_^';
+                    if (!/^(\w)+(\.\w+)*@@(\w)+((\.\w+)+)$/.test(value)) {
+                        return '少侠，你留下的电子邮箱不对哦，再试试？';
+                    }
+                },
+                commentText: function (value) {
+                    var v = layedit.getText(layeditIndex);
+                    if (v.length === 0) {
+                        return '少侠，既然来了，就留下点什么呗';
+                    }
+                    if (v.length <= 10) return '写得太少了，再写点吧.拜托了^_^';
+                }
+            });
+        });
+    </script>
+}
