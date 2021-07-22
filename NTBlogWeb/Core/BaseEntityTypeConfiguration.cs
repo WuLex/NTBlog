@@ -1,4 +1,5 @@
-﻿using System.Data.Entity.ModelConfiguration;
+﻿//using System.Data.Entity.ModelConfiguration;
+using NTBlogWeb.Core.Extension;
 
 namespace NTBlogWeb.Core
 {
@@ -6,7 +7,7 @@ namespace NTBlogWeb.Core
     /// Mapping base
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
-    public abstract class BaseEntityTypeConfiguration<TEntity> : EntityTypeConfiguration<TEntity> where TEntity : class
+    public abstract class BaseEntityTypeConfiguration<TEntity> : EfExt.EntityTypeConfiguration<TEntity> where TEntity : class
     {
         /// <summary>
         /// 构造函数
