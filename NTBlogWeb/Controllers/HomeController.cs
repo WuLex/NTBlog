@@ -1,14 +1,12 @@
-﻿using NTBlogWeb.Core;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using NTBlogWeb.Core;
 using NTBlogWeb.Core.Extension;
 using NTBlogWeb.Helper;
 using NTBlogWeb.Models;
 using NTBlogWeb.ViewModels;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 
 namespace NTBlogWeb.Controllers
 {
@@ -30,12 +28,12 @@ namespace NTBlogWeb.Controllers
             _archiveRepository = archiveRepository;
         }
 
-
         // GET: Home
         public ActionResult Index()
         {
             return RedirectToAction("List");
         }
+
         public ActionResult List()
         {
             return View(GetList(new SearchInfo(1)));
@@ -49,7 +47,7 @@ namespace NTBlogWeb.Controllers
             var page = Request.Query["page"];
             var searchInfo = new SearchInfo(Convert.ToInt32(page));
             //获取查询条件
-            var url =Convert.ToString(Request.Query["p"]);
+            var url = Convert.ToString(Request.Query["p"]);
             var pIndex = url.LastIndexOf('/');
             if (pIndex > 0)
             {
@@ -82,6 +80,7 @@ namespace NTBlogWeb.Controllers
 
             return Json(new { data = list, page = pages.TotalPages });
         }
+
         //关键字搜索
         public ActionResult Search(string keywork)
         {
@@ -90,6 +89,7 @@ namespace NTBlogWeb.Controllers
             ViewBag.Highlight = keywork;
             return View("List", pages);
         }
+
         //文章详情
         public ActionResult Detail(string articleId)
         {
@@ -106,22 +106,24 @@ namespace NTBlogWeb.Controllers
                     //浏览量+1
                     article.Hits += 1;
                     _articleRepository.Update(article);
-                    var cookie = Request.Cookies["CommentInfo"];
+                    var cookie = Request.Cookies["CommentInfo"].FromLegacyCookieString();
                     if (cookie != null)
                     {
-                        ViewBag.NickName = cookie.Values["NickName"];
-                        ViewBag.Email = cookie.Values["Email"];
+                        ViewBag.NickName = cookie["NickName"];
+                        ViewBag.Email = cookie["Email"];
                     }
                     return View(article);
                 }
             }
             return RedirectToAction("NotFound", "Message");
         }
+
         //关于
         public ActionResult About()
         {
             return View();
         }
+
         //标签
         public ActionResult Tag(string tagName)
         {
@@ -131,6 +133,7 @@ namespace NTBlogWeb.Controllers
                 ViewBag.Highlight = tagName;
             return View("List", pages);
         }
+
         //分类
         public ActionResult CategorySearch(string categoryName)
         {
@@ -143,7 +146,6 @@ namespace NTBlogWeb.Controllers
         //文章评论
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [ValidateInput(false)]
         public ActionResult Comment(CommentModel model)
         {
             var comment = new Comment
@@ -157,9 +159,7 @@ namespace NTBlogWeb.Controllers
                 Email = model.Email
             };
 
-
             _commentRepository.Insert(comment);
-
 
             CookieOptions options = new CookieOptions();
             // 设置过期时间
@@ -194,6 +194,7 @@ namespace NTBlogWeb.Controllers
                 return RedirectToAction("List");
             }
         }
+
         /// <summary>
         /// 加载侧边数据
         /// </summary>
@@ -278,22 +279,27 @@ namespace NTBlogWeb.Controllers
         {
             PageIndex = pageIndex;
         }
+
         /// <summary>
         /// 页索引值
         /// </summary>
         public int PageIndex { get; private set; }
+
         /// <summary>
         /// 关键字
         /// </summary>
         public string Keywork { get; set; }
+
         /// <summary>
         /// 标签名称
         /// </summary>
         public string TagName { get; set; }
+
         /// <summary>
         /// 分类名称
         /// </summary>
         public string CategoryName { get; set; }
+
         /// <summary>
         /// 归档日期
         /// </summary>

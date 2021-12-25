@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
-using System.Web.Security;
 
 namespace NTBlogWeb.Core.Extension
 {
@@ -15,9 +16,12 @@ namespace NTBlogWeb.Core.Extension
         /// <returns>加密后的字符串(32位)</returns>
         public static string ToMd5(this string str)
         {
-#pragma warning disable CS0618 // 类型或成员已过时
-            return FormsAuthentication.HashPasswordForStoringInConfigFile(str, "MD5");
-#pragma warning restore CS0618 // 类型或成员已过时
+            using (var md5 = MD5.Create())
+            {
+                var result = md5.ComputeHash(Encoding.UTF8.GetBytes(str));
+                var strResult = BitConverter.ToString(result);
+                return strResult.Replace("-", "").ToUpper();
+            }
         }
     }
 }

@@ -1,30 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text.RegularExpressions;
 using System.Web;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 
 namespace NTBlogWeb.Helper
 {
     public class WebHelper
     {
+        public static IServiceProvider Instance { get; set; }
+
+      
         /// <summary>
         /// 获得当前页面客户端的IP
         /// </summary>
         /// <returns>当前页面客户端的IP</returns>
         public static string GetIp()
         {
-            string result = HttpContext.Current.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+            IHttpContextAccessor httpContext = (IHttpContextAccessor)Instance.GetService(typeof(IHttpContextAccessor));
+            string result = httpContext.HttpContext.Request.Headers["HTTP_X_FORWARDED_FOR"];
+            //string result = HttpContext.Current.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
             if (string.IsNullOrEmpty(result))
             {
-                result = HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"];
+                result = httpContext.HttpContext.Request.Headers["REMOTE_ADDR"]; //HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"];
             }
 
             if (string.IsNullOrEmpty(result))
             {
-                result = HttpContext.Current.Request.UserHostAddress;
+                result = httpContext.HttpContext.Connection.RemoteIpAddress.ToString();
             }
             result = result == "::1" ? "127.0.0.1" : result;
 
@@ -51,7 +58,9 @@ namespace NTBlogWeb.Helper
         /// <returns>绝对路径</returns>
         public static string GetFilePath(string localPath)
         {
-            return Regex.IsMatch(localPath, @"([A-Za-z]):\\([\S]*)") ? localPath : HttpContext.Current.Server.MapPath(localPath);
+            IWebHostEnvironment _env = (IWebHostEnvironment)Instance.GetService(typeof(IWebHostEnvironment));
+            var path = Path.Combine(_env.ContentRootPath, localPath);
+            return Regex.IsMatch(localPath, @"([A-Za-z]):\\([\S]*)") ? localPath : path;
         }
     }
 }

@@ -7,7 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using NTBlogWeb.Core.Util;
-
+using Microsoft.Extensions.Caching.Memory;
 
 namespace NTBlogWeb.Configs
 {
@@ -19,13 +19,14 @@ namespace NTBlogWeb.Configs
         /// <returns></returns>
         public static Setting GetBasicConfig()
         {
-            var settingCache = HttpContext.Current.Cache["Setting"];
+            var settingCache = MemoryCacheHelper.Cache.Get<Setting>("Setting");// HttpContext.Current.Cache["Setting"];
             if (settingCache == null)
             {
                 var settingString = FileHelper.ReadFile(WebHelper.GetFilePath("~/Configs/Files/") + "setting.json");
                 var setting = JsonConvert.DeserializeObject<Setting>(settingString);
 
-                HttpContext.Current.Cache.Insert("Setting", setting);
+                MemoryCacheHelper.Cache.Set("Setting", setting);
+                //HttpContext.Current.Cache.Insert("Setting", setting);
 
                 return setting;
             }
@@ -45,7 +46,7 @@ namespace NTBlogWeb.Configs
             fr.Write(jsonStr);
             fr.Close();
             //清除缓存
-            HttpContext.Current.Cache.Remove("Setting");
+            //HttpContext.Current.Cache.Remove("Setting");
         }
     }
 }

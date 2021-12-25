@@ -34,3 +34,11 @@ D:\sourceproject\NTBlog\NTBlogWeb\obj\Debug\net5.0\NTBlogWeb.csproj.CoreCompileI
 D:\sourceproject\NTBlog\NTBlogWeb\obj\Debug\net5.0\NTBlogWeb.MvcApplicationPartsAssemblyInfo.cache
 D:\sourceproject\NTBlog\NTBlogWeb\obj\Debug\net5.0\NTBlogWeb.RazorAssemblyInfo.cache
 D:\sourceproject\NTBlog\NTBlogWeb\obj\Debug\net5.0\NTBlogWeb.RazorAssemblyInfo.cs
+E:\GitProject\NTBlog\NTBlogWeb\obj\Debug\net5.0\NTBlogWeb.csproj.AssemblyReference.cache
+E:\GitProject\NTBlog\NTBlogWeb\obj\Debug\net5.0\NTBlogWeb.GeneratedMSBuildEditorConfig.editorconfig
+E:\GitProject\NTBlog\NTBlogWeb\obj\Debug\net5.0\NTBlogWeb.AssemblyInfoInputs.cache
+E:\GitProject\NTBlog\NTBlogWeb\obj\Debug\net5.0\NTBlogWeb.AssemblyInfo.cs
+E:\GitProject\NTBlog\NTBlogWeb\obj\Debug\net5.0\NTBlogWeb.csproj.CoreCompileInputs.cache
+E:\GitProject\NTBlog\NTBlogWeb\obj\Debug\net5.0\NTBlogWeb.MvcApplicationPartsAssemblyInfo.cache
+E:\GitProject\NTBlog\NTBlogWeb\obj\Debug\net5.0\NTBlogWeb.RazorAssemblyInfo.cache
+E:\GitProject\NTBlog\NTBlogWeb\obj\Debug\net5.0\NTBlogWeb.RazorAssemblyInfo.cs
