@@ -2,6 +2,8 @@
 @{
     Layout = null;
 }
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
 
 <!DOCTYPE html>
 
@@ -81,7 +83,7 @@
                 }
             });
             @{
-                var sessionValue = Session["PwdErrorCount"];
+                var sessionValue = HttpContextAccessor.HttpContext.Session.Get("PwdErrorCount");
                 var errorCount = sessionValue == null ? 0 : Convert.ToInt32(sessionValue);
             }
             var errorCount = @errorCount;

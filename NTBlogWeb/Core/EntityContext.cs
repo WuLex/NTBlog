@@ -1,41 +1,59 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
+using System;
 using System.Collections.Generic;
 //using System.Data.Entity;
 //using System.Data.Entity.ModelConfiguration;
 using System.Linq;
 using System.Reflection;
 using System.Web;
+using static NTBlogWeb.Core.Extension.EfExt;
 
 namespace NTBlogWeb.Core
 {
-    public class EntityContext //: DbContext
+    public class EntityContext : DbContext
     {
-        //public EntityContext() : base("name=DefaultConnectionString") { }
-        //public EntityContext(string nameOrConnectionString) : base(nameOrConnectionString) {
+        #region 方式一:ApplicationDbContext 类必须公开具有 DbContextOptions<ApplicationDbContext> 参数的公共构造函数。 这是将 AddDbContext 的上下文配置传递到 DbContext 的方式。
+        public EntityContext(DbContextOptions<EntityContext> options): base(options)
+        {
+
+        } 
+        #endregion
+
+        #region 方式二:还可以轻松地通过 DbContext 构造函数传递配置（如连接字符串）
+        //private readonly string _connectionString;
+        //public EntityContext(string connectionString)
+        //{
+        //    _connectionString = connectionString;
+        //}
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.UseSqlServer(_connectionString);
+        //} 
+        #endregion
+
+        //public EntityContext(string nameOrConnectionString) : base(nameOrConnectionString)
+        //{
         //    Database.SetInitializer<EntityContext>(null);
         //    //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<EntityContext>());
         //}
-        /// <summary>
-        /// This method is called when the model for a derived context has been initialized, 
-        /// but before the model has been locked down and used to initialize the context. 
-        /// The default implementation of this method does nothing, 
-        /// but it can be overridden in a derived class such that the model can be further configured before it is locked down.
-        /// </summary>
-        /// <param name="modelBuilder"></param>
-        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        //{
-        //    var typesToRegister = Assembly.GetExecutingAssembly().GetTypes()
-        //        .Where(type => !string.IsNullOrEmpty(type.Namespace))
-        //        .Where(type => type.BaseType != null && 
-        //        type.BaseType.BaseType != null && 
-        //        type.BaseType.BaseType.IsGenericType && 
-        //        type.BaseType.BaseType.GetGenericTypeDefinition() == typeof(EntityTypeConfiguration<>)).ToList();
-        //    foreach (var type in typesToRegister)
-        //    {
-        //        dynamic configurationInstance = Activator.CreateInstance(type);
-        //        modelBuilder.Configurations.Add(configurationInstance);
-        //    }
-        //    base.OnModelCreating(modelBuilder);
-        //}
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            Type[] types = typeof(EntityTypeConfiguration<>).GetTypeInfo().Assembly.GetTypes();
+            IEnumerable<Type> typesToRegister = types
+                .Where(type => !string.IsNullOrEmpty(type.Namespace) &&
+                                type.GetTypeInfo().BaseType != null &&
+                                type.GetTypeInfo().BaseType.GetTypeInfo().IsGenericType &&
+                                type.GetTypeInfo().BaseType.GetGenericTypeDefinition() == typeof(EntityTypeConfiguration<>));
+
+            foreach (var type in typesToRegister)
+            {
+                dynamic configurationInstance = Activator.CreateInstance(type);
+                ModelBuilderExtensions.AddConfiguration(modelBuilder, configurationInstance);
+            }
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

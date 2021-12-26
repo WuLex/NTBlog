@@ -8,7 +8,7 @@ namespace NTBlogWeb.Entities
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //注入Sql链接字符串
-            optionsBuilder.UseSqlServer(@"Server=.;Database=Test1;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer(@"Data Source=.;Initial Catalog=BlogDB;Persist Security Info=True;User ID=sa;Password=wu199010");
         }
         public DbSet<Archive> Archives { get; set; }
         public DbSet<Account> Accounts { get; set; }

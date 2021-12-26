@@ -68,30 +68,30 @@ namespace NTBlogWeb.Service.Implements
                 throw new ArgumentNullException("entity");
 
             var response = new ResponseBase();
-            using (var tran = _dbContext.Database.BeginTransaction())
-            {
-                var date = DateTime.Now.ToString("yyyy年MM月");
-                var archiveContext = _dbContext.Set<Archive>();
-                var articleContext = _dbContext.Set<Article>();
-                var archive = archiveContext.SingleOrDefault(p => p.ArchiveDate == date);
+            //using (var tran = _dbContext.Database.BeginTransaction())
+            //{
+            //    var date = DateTime.Now.ToString("yyyy年MM月");
+            //    var archiveContext = _dbContext.Set<Archive>();
+            //    var articleContext = _dbContext.Set<Article>();
+            //    var archive = archiveContext.SingleOrDefault(p => p.ArchiveDate == date);
 
-                if (archive == null)
-                {
-                    archive = new Archive
-                    {
-                        ArchiveDate = date,
-                        Count = 1
-                    };
-                    archiveContext.Add(archive);
-                }
-                else
-                {
-                    archive.Count++;
-                }
-                articleContext.Add(entity);
-                _dbContext.SaveChanges();
-                tran.Commit();
-            }
+            //    if (archive == null)
+            //    {
+            //        archive = new Archive
+            //        {
+            //            ArchiveDate = date,
+            //            Count = 1
+            //        };
+            //        archiveContext.Add(archive);
+            //    }
+            //    else
+            //    {
+            //        archive.Count++;
+            //    }
+            //    articleContext.Add(entity);
+            //    _dbContext.SaveChanges();
+            //    tran.Commit();
+            //}
 
             return response;
         }

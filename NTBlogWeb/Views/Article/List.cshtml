@@ -1,4 +1,6 @@
 ﻿@model NTBlogWeb.Core.PagedList<NTBlogWeb.Models.Article>
+@using Microsoft.AspNetCore.Http.Extensions
+
 @{
     ViewBag.Title = "文章列表";
     Layout = "~/Views/Shared/_ManageLayoutPage.cshtml";
@@ -31,7 +33,7 @@
                             foreach (var item in categories)
                             {
                                 var selected = item.Id == ViewBag.CagegotyId ? "selected" : "";
-                                <option value="@item.Id" @selected>@item.CategoryName</option>
+                                <!option value="@item.Id" @selected>@item.CategoryName</!option>
                             }
                         }
                     </select>
@@ -59,9 +61,9 @@
                         }
                     }
                     <select name="state" lay-filter="state">
-                        <option value="0" @all>全部状态</option>
-                        <option value="1" @normal>正常</option>
-                        <option value="2" @draft>草稿</option>
+                        <!option value="0" @all>全部状态</!option>
+                        <!option value="1" @normal>正常</!option>
+                        <!option value="2" @draft>草稿</!option>
                     </select>
                 </div>
             </div>
@@ -83,7 +85,8 @@
                 <th>标题</th>
                 <th>作者</th>
                 @{
-                    var url = Request.Url.ToString();
+                    //var url = Request.Url.ToString();
+                    var url = Context.Request.GetDisplayUrl();
                     if (url.IndexOf("field") == -1)
                     {
                         url = url + (url.IndexOf('?') == -1 ? "?" : "&") + "field=CreateTime&sort=" + ViewBag.CreateTimeSort;

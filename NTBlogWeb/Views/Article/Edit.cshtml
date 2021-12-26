@@ -29,7 +29,7 @@
                     foreach (var item in categories)
                     {
                         var selected = item.Id == Model.CategoryId ? "selected" : "";
-                        <option value="@item.Id" @selected>@item.CategoryName</option>
+                        <!option value="@item.Id" @selected>@item.CategoryName</!option>
                     }
                 }
             </select>
