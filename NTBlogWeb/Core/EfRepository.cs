@@ -90,7 +90,7 @@ namespace NTBlogWeb.Core
                 if (predicate == null)
                     throw new ArgumentNullException("entity");
 
-                Entities.Where(predicate).Delete();
+                Entities.Where(predicate).DeleteFromQuery();
             }
             catch (ValidationException dbEx)
             {
@@ -175,7 +175,7 @@ namespace NTBlogWeb.Core
                 if (updateExpression == null)
                     throw new ArgumentNullException("updateExpression");
 
-                Entities.Update(updateExpression);
+                Entities.UpdateFromQuery(updateExpression);
             }
             catch (ValidationException dbEx)
             {
@@ -190,7 +190,7 @@ namespace NTBlogWeb.Core
                 if (updateExpression == null)
                     throw new ArgumentNullException("updateExpression");
 
-                await Entities.UpdateAsync(updateExpression);
+                await Entities.UpdateFromQueryAsync(updateExpression);
             }
             catch (ValidationException dbEx)
             {

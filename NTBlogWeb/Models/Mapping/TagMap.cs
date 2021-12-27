@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using NTBlogWeb.Core;
 
 namespace NTBlogWeb.Models.Mapping
@@ -11,12 +13,17 @@ namespace NTBlogWeb.Models.Mapping
     {
         public TagMap()
         {
-            HasKey(p => p.Id);
+           
+        }
 
-            ToTable("Tags");
+        public override void Map(EntityTypeBuilder<Tag> builder)
+        {
+            builder.HasKey(p => p.Id);
 
-            Property(p => p.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-            Property(p => p.TagName).HasMaxLength(50);
+            builder.ToTable("Tags");
+
+            builder.Property(p => p.Id).ValueGeneratedOnAdd();//(DatabaseGeneratedOption.Identity);
+            builder.Property(p => p.TagName).HasMaxLength(50);
         }
     }
 }

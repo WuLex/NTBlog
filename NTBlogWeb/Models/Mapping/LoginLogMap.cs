@@ -1,4 +1,6 @@
-﻿using NTBlogWeb.Core;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using NTBlogWeb.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,11 +12,16 @@ namespace NTBlogWeb.Models.Mapping
     {
         public LoginLogMap()
         {
+           
+        }
+
+        public override void Map(EntityTypeBuilder<LoginLog> builder)
+        {
             //Key
-            HasKey(p => p.Id);
+            builder.HasKey(p => p.Id);
 
             //Table
-            ToTable("LoginLogs");
+            builder.ToTable("LoginLogs");
         }
     }
 }

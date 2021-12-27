@@ -1,4 +1,6 @@
-﻿using NTBlogWeb.Core;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using NTBlogWeb.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,11 +12,19 @@ namespace NTBlogWeb.Models.Mapping
     {
         public AccountMap()
         {
-            //Key
-            HasKey(p => p.Id);
+            ////Key
+            //HasKey(p => p.Id);
 
-            //Table
-            ToTable("Accounts");
+            ////Table
+            //ToTable("Accounts");
+        }
+
+        public override void Map(EntityTypeBuilder<Account> builder)
+        {
+            builder.ToTable("Accounts");
+            builder.Property(p => p.Id).IsRequired();
+
+            //throw new NotImplementedException();
         }
     }
 }

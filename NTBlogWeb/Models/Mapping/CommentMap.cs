@@ -1,4 +1,6 @@
-﻿using NTBlogWeb.Core;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using NTBlogWeb.Core;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -11,16 +13,23 @@ namespace NTBlogWeb.Models.Mapping
     {
         public CommentMap()
         {
-            HasKey(p => p.Id);
-            ToTable("Comments");
+           
 
-            Property(p => p.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+        }
 
-            HasRequired(p => p.Article)
+        public override void Map(EntityTypeBuilder<Comment> builder)
+        {
+            builder.HasKey(p => p.Id);
+            builder.ToTable("Comments");
+
+            builder.Property(p => p.Id).ValueGeneratedOnAdd();//.HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+
+            builder.HasOne(p => p.Article)
                 .WithMany(p => p.Comments)
                 .HasForeignKey(p => p.ArticleId)
-                .WillCascadeOnDelete(false);
-
+                .OnDelete(DeleteBehavior.SetNull)
+                //.WillCascadeOnDelete(false)
+                .IsRequired(); 
         }
     }
 }
