@@ -22,7 +22,7 @@ namespace NTBlogWeb.Configs
             var settingCache = MemoryCacheHelper.Cache.Get<Setting>("Setting");// HttpContext.Current.Cache["Setting"];
             if (settingCache == null)
             {
-                var settingString = FileHelper.ReadFile(WebHelper.GetFilePath("~/Configs/Files/") + "setting.json");
+                var settingString = FileHelper.ReadFile(WebHelper.GetFilePath("setting.json"));
                 var setting = JsonConvert.DeserializeObject<Setting>(settingString);
 
                 MemoryCacheHelper.Cache.Set("Setting", setting);

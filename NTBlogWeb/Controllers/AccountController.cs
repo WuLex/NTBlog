@@ -33,7 +33,7 @@ namespace NTBlogWeb.Controllers
             return View();
         }
 
-        [AllowAnonymous]
+        [Authorize]
         public ActionResult Login()
         {
             // 判断用户是否已经登录，如果已经登录，那么读取登录用户的用户名
@@ -69,7 +69,7 @@ namespace NTBlogWeb.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [AllowAnonymous]
+        [Authorize]
         public ActionResult Login(LoginModel model)
         {
             if (model == null)

@@ -14,10 +14,12 @@ namespace NTBlogWeb.Service.Implements
     public class ArticleService : IArticleService
     {
         private readonly IRepository<Article> _repository;
-        private readonly IDbContext _dbContext;
+        // private readonly IDbContext _dbContext;
+
+        private readonly EntityContext _dbContext;
         private readonly IRepository<Archive> _archiveRepository;
 
-        public ArticleService(IRepository<Article> repository, IRepository<Archive> archiveRepository, IDbContext dbContext)
+        public ArticleService(IRepository<Article> repository, IRepository<Archive> archiveRepository, EntityContext dbContext)
         {
             _repository = repository;
             _archiveRepository = archiveRepository;
@@ -44,11 +46,11 @@ namespace NTBlogWeb.Service.Implements
                         query = query.OrderBy(p => p.Id);
                         break;
                 }
-                
+
             }
             else
             {
-                query = query.OrderByDescending(p=>p.IsTop).ThenByDescending(p=>p.Sort).ThenByDescending(p => p.CreateTime);
+                query = query.OrderByDescending(p => p.IsTop).ThenByDescending(p => p.Sort).ThenByDescending(p => p.CreateTime);
             }
             var page = query.ToPagedList(request.PageIndex, request.PageSize, true);
 

@@ -20,10 +20,10 @@ namespace NTBlogWeb.Core
     /// <typeparam name="TId"></typeparam>
     public class EfRepository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity
     {
-        private readonly IDbContext _context;
+        private readonly EntityContext _context;
         private DbSet<TEntity> _entities;
 
-        public EfRepository(IDbContext context)
+        public EfRepository(EntityContext context)
         {
             _context = context;
         }

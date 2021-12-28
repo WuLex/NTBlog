@@ -59,7 +59,7 @@ namespace NTBlogWeb.Helper
         public static string GetFilePath(string localPath)
         {
             IWebHostEnvironment _env = (IWebHostEnvironment)Instance.GetService(typeof(IWebHostEnvironment));
-            var path = Path.Combine(_env.ContentRootPath, localPath);
+            var path = Path.Combine(_env.ContentRootPath + "\\Configs\\Files\\", localPath);
             return Regex.IsMatch(localPath, @"([A-Za-z]):\\([\S]*)") ? localPath : path;
         }
     }

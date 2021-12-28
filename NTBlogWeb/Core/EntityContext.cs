@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
+using NTBlogWeb.Models;
 using System;
 using System.Collections.Generic;
 //using System.Data.Entity;
@@ -17,7 +18,7 @@ namespace NTBlogWeb.Core
         public EntityContext(DbContextOptions<EntityContext> options): base(options)
         {
 
-        } 
+        }
         #endregion
 
         #region 方式二:还可以轻松地通过 DbContext 构造函数传递配置（如连接字符串）
@@ -38,22 +39,28 @@ namespace NTBlogWeb.Core
         //    //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<EntityContext>());
         //}
 
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            Type[] types = typeof(EntityTypeConfiguration<>).GetTypeInfo().Assembly.GetTypes();
-            IEnumerable<Type> typesToRegister = types
-                .Where(type => !string.IsNullOrEmpty(type.Namespace) &&
-                                type.GetTypeInfo().BaseType != null &&
-                                type.GetTypeInfo().BaseType.GetTypeInfo().IsGenericType &&
-                                type.GetTypeInfo().BaseType.GetGenericTypeDefinition() == typeof(EntityTypeConfiguration<>));
-
-            foreach (var type in typesToRegister)
-            {
-                dynamic configurationInstance = Activator.CreateInstance(type);
-                ModelBuilderExtensions.AddConfiguration(modelBuilder, configurationInstance);
-            }
+            //Type[] types = typeof(EntityTypeConfiguration<>).GetTypeInfo().Assembly.GetTypes();
+            //IEnumerable<Type> typesToRegister = types
+            //    .Where(type => !string.IsNullOrEmpty(type.Namespace) &&
+            //                    type.GetTypeInfo().BaseType != null &&
+            //                    type.GetTypeInfo().BaseType.GetTypeInfo().IsGenericType && type.GetTypeInfo().BaseType.GetGenericTypeDefinition() == typeof(EntityTypeConfiguration<>));
 
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(EntityTypeConfiguration<>).Assembly); // Here UseConfiguration is any IEntityTypeConfiguration
         }
+
+        public DbSet<Archive> Archives { get; set; }
+        public DbSet<Account> Accounts { get; set; }
+        public DbSet<Article> Articles { get; set; }
+        public DbSet<Category> Categorys { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Log> Logs { get; set; }
+        public DbSet<LoginLog> LoginLogs { get; set; }
+        public DbSet<Tag> Tags { get; set; }
+
     }
 }
