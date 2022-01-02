@@ -17,14 +17,17 @@ namespace NTBlogWeb.Controllers
 {
     public class AccountController : BaseController
     {
+
+        private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IRepository<Account> _accountRepository;
         private readonly IRepository<LoginLog> _loginLogRepository;
 
         public AccountController(
-            IRepository<Account> accountRepository, IRepository<LoginLog> loginLogRepository)
+            IRepository<Account> accountRepository, IRepository<LoginLog> loginLogRepository, IHttpContextAccessor httpContextAccessor)
         {
             _accountRepository = accountRepository;
             _loginLogRepository = loginLogRepository;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         // GET: Account
@@ -33,7 +36,8 @@ namespace NTBlogWeb.Controllers
             return View();
         }
 
-        [Authorize]
+        [AllowAnonymous]
+        [HttpGet]
         public ActionResult Login()
         {
             // 判断用户是否已经登录，如果已经登录，那么读取登录用户的用户名
@@ -47,12 +51,16 @@ namespace NTBlogWeb.Controllers
             //}
 
             //如果已经登录，直接跳转至文章管理列表页
-            if (HttpContext.User.Identity.IsAuthenticated)
+            
+            if (_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
             {
+                ViewBag.UserName = HttpContext.User.Claims?.First().Value;
                 return RedirectToAction("List", "Article");
             }
-
-            ViewBag.UserName = HttpContext.User.Claims.First().Value;
+            else
+            {
+                return View();
+            }
 
             #region NET框架的旧方法
 
@@ -64,12 +72,12 @@ namespace NTBlogWeb.Controllers
 
             #endregion NET框架的旧方法
 
-            return View();
+           
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        [Authorize]
+        //[ValidateAntiForgeryToken]
+        [AllowAnonymous]
         public ActionResult Login(LoginModel model)
         {
             if (model == null)
@@ -78,7 +86,7 @@ namespace NTBlogWeb.Controllers
             }
             //验证验证码是否正确
             var pwdErrorCount = HttpContext.Session.GetString("PwdErrorCount");
-            if (pwdErrorCount != null && Convert.ToInt32(pwdErrorCount) > 5)
+            if(!string.IsNullOrEmpty(pwdErrorCount) && Convert.ToInt32(pwdErrorCount) > 5)
             {
                 var sessionVerifyCode = HttpContext.Session.GetString("VerifyCode");
                 if (sessionVerifyCode == null || model.VerifyCode != sessionVerifyCode.ToString())
@@ -99,12 +107,12 @@ namespace NTBlogWeb.Controllers
             {
                 int count = 1;
                 var errorCount = HttpContext.Session.GetString("PwdErrorCount");
-                if (errorCount != null)
+                if (!string.IsNullOrEmpty(errorCount))
                 {
                     count = Convert.ToInt32(errorCount) + 1;
                 }
 
-                HttpContext.Session.SetInt32("PwdErrorCount", count);
+                HttpContext.Session.SetString("PwdErrorCount",Convert.ToString(count));
 
                 return Json(GetResult(false, "用户名或密码输错了呢。", new { errorCount = count }));
             }
@@ -120,7 +128,7 @@ namespace NTBlogWeb.Controllers
             });
 
             //重置错误次数
-            HttpContext.Session.SetString("PwdErrorCount", null);
+            HttpContext.Session.SetString("PwdErrorCount", "");
 
             if (ModelState.IsValid)
             {

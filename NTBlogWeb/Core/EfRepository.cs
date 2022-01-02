@@ -122,9 +122,11 @@ namespace NTBlogWeb.Core
                 if (entities == null)
                     throw new ArgumentNullException("entities");
 
-                foreach (var entity in entities)
-                    this.Entities.Add(entity);
-
+                #region 遍历方式
+                //foreach (var entity in entities)
+                //    this.Entities.Add(entity); 
+                #endregion
+                this.Entities.AddRange(entities);
                 this._context.SaveChanges();
             }
             catch (ValidationException dbEx)
@@ -204,7 +206,7 @@ namespace NTBlogWeb.Core
             {
                 if (entity == null)
                     throw new ArgumentNullException("entity");
-
+                Entities.Update(entity);
                 this._context.SaveChanges();
             }
             catch (ValidationException dbEx)
@@ -221,11 +223,14 @@ namespace NTBlogWeb.Core
                 {
                     throw new ArgumentNullException("entities");
                 }
-                foreach (var entity in entities)
-                {
-                    var validationContext = new ValidationContext(entity);
-                    Validator.ValidateObject(entity, validationContext);
-                }
+                #region 遍历方式
+                //foreach (var entity in entities)
+                //{
+                //    var validationContext = new ValidationContext(entity);
+                //    Validator.ValidateObject(entity, validationContext);
+                //} 
+                #endregion
+                Entities.UpdateRange(entities);
                 this._context.SaveChanges();
             }
             catch (ValidationException dbEx)
@@ -260,12 +265,13 @@ namespace NTBlogWeb.Core
 
         public virtual TEntity FindById(object id)
         {
-            return Entities.Find(id);
+            //return Entities.Find(id);
+            return Entities.Single(x=>x.Id ==Convert.ToInt32(id));
         }
 
         public virtual IList<TEntity> FindAll()
         {
-            return Entities.OrderBy(p => p.Id).ToList();
+            return Entities.AsNoTracking().OrderBy(p => p.Id).ToList();
         }
 
         public virtual IList<TEntity> Find(Expression<Func<TEntity, bool>> predicate)

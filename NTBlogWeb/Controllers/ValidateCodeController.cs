@@ -11,6 +11,7 @@ namespace NTBlogWeb.Controllers
     public class ValidateCodeController : Controller
     {
         // GET: ValidateCode
+        [HttpGet]
         public ActionResult GetValidateCode()
         {
             var vCode = new ValidateCode();

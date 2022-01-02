@@ -1,33 +1,28 @@
+using Autofac;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using NTBlogWeb.Core.Util;
-using Autofac;
-using NTBlogWeb.Controllers;
-using Microsoft.AspNetCore.Mvc;
-using NTBlogWeb.Core.Logging;
-using NTBlogWeb.Core.Email;
-using System.Configuration;
-using System.IO;
-using System.Reflection;
+using Microsoft.Extensions.FileProviders;
+using Microsoft.Extensions.Hosting;
 using NTBlogWeb.Core;
+using NTBlogWeb.Core.Email;
+using NTBlogWeb.Core.Engines;
+using NTBlogWeb.Core.Logging;
+using NTBlogWeb.Core.Middleware;
+using NTBlogWeb.Core.Util;
+using NTBlogWeb.Helper;
+using NTBlogWeb.Models;
 using NTBlogWeb.Service.Implements;
 using NTBlogWeb.Service.Interfaces;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using NTBlogWeb.Helper;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.FileProviders;
-using NTBlogWeb.Core.Engines;
-using NTBlogWeb.Models;
+using System.IO;
+using System.Linq;
+using System.Reflection;
 
 namespace NTBlogWeb
 {
@@ -41,7 +36,6 @@ namespace NTBlogWeb
         public IConfiguration Configuration { get; }
 
         public ILifetimeScope AutofacContainer { get; private set; }
-
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -60,6 +54,8 @@ namespace NTBlogWeb
 
             services.AddSession();
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
+
+            services.AddHttpContextAccessor();
             //在ConfigureServices中注册缓存服务
             services.AddMemoryCache();
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
@@ -92,7 +88,6 @@ namespace NTBlogWeb
             //Service
             builder.RegisterType<ArticleService>().As<IArticleService>().InstancePerLifetimeScope();
 
-
             #region 注册所有控制器的关系及控制器实例化所需要的组件
 
             var controllersTypesInAssembly = typeof(Startup).Assembly.GetExportedTypes()
@@ -101,9 +96,8 @@ namespace NTBlogWeb
             builder.RegisterTypes(controllersTypesInAssembly)
                 .PropertiesAutowired();
 
-            #endregion
+            #endregion 注册所有控制器的关系及控制器实例化所需要的组件
         }
-
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, EntityContext db)
@@ -122,14 +116,14 @@ namespace NTBlogWeb
                 app.UseHsts();
             }
 
-
             db.Database.EnsureCreated();
 
             app.UseStaticHostEnviroment();
             app.UseSession();
 
-
             app.UseHttpsRedirection();
+
+            app.UseMiddleware<IgnoreRouteMiddleware>();
 
             #region 静态文件
 
@@ -153,18 +147,108 @@ namespace NTBlogWeb
             // 映射路径三
             app.UseStaticFiles(new StaticFileOptions()
             {
+                FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath, "Images")),
+                RequestPath = "/Images",
+            });
+
+            // 映射路径四
+            app.UseStaticFiles(new StaticFileOptions()
+            {
                 FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath, "Scripts")),
                 RequestPath = "/Scripts",
             });
 
-            #endregion
+
+            // 映射路径五
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath, "fonts")),
+                RequestPath = "/fonts",
+            });
+
+            #endregion 静态文件
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
+               // endpoints.MapControllerRoute("wangEditor", "wangEditor", new { controller = "Upload", action = "WangEditor" });
+
+               // //Error pages
+               // endpoints.MapControllerRoute("404", "404", new { controller = "ErrorPage", action = "Error404" });
+               // endpoints.MapControllerRoute("500", "500", new { controller = "ErrorPage", action = "Error500" });
+               // endpoints.MapControllerRoute("illegal", "illegal", new { controller = "ErrorPage", action = "IllegalOperation" });
+               // endpoints.MapControllerRoute("lackauthority", "lackauthority", new { controller = "ErrorPage", action = "LackAuthority" });
+
+               // //Login
+               // endpoints.MapControllerRoute("Login2", "manage/login", new { controller = "Account", action = "Login" });
+               // endpoints.MapControllerRoute("Login1", "manage/login.html", new { controller = "Account", action = "Login" });
+               // //SignOut
+               // endpoints.MapControllerRoute("SignOut1", "manage/signout", new { controller = "Account", action = "SignOut" });
+
+               // //validate code
+               // endpoints.MapControllerRoute("ValidateCode1", "manage/validatecode", new { controller = "ValidateCode", action = "GetValidateCode" });
+
+               // //Detail
+               // endpoints.MapControllerRoute("ArticleDetail2", "detail-{articleId}", new { controller = "Home", action = "Detail" });
+               // endpoints.MapControllerRoute("ArticleDetail1", "detail-{articleId}.html", new { controller = "Home", action = "Detail" });
+               // endpoints.MapControllerRoute("ArticleDetail4", "detail/{articleId}", new { controller = "Home", action = "Detail" });
+               // endpoints.MapControllerRoute("ArticleDetail3", "detail/{articleId}.html", new { controller = "Home", action = "Detail" });
+
+               // //About
+               // endpoints.MapControllerRoute("About2", "about", new { controller = "Home", action = "About" });
+               // endpoints.MapControllerRoute("About1", "about.html", new { controller = "Home", action = "About" });
+
+               // //Archive
+               // endpoints.MapControllerRoute("Archive1", "archive/{keywork}", new { controller = "Home", action = "Archive" });
+               // endpoints.MapControllerRoute("Archive2", "archive/{keywork}.html", new { controller = "Home", action = "Archive" });
+
+               // //Tag
+               // endpoints.MapControllerRoute("Tag2", "tag/{tagName}", new { controller = "Home", action = "Tag" });
+               // endpoints.MapControllerRoute("Tag1", "tag/{tagName}.html", new { controller = "Home", action = "Tag" });
+
+               // //List
+               // endpoints.MapControllerRoute("List2", "all", new { controller = "Home", action = "List" });
+               // endpoints.MapControllerRoute("List1", "all.html", new { controller = "Home", action = "List" });
+
+               // //404
+               // endpoints.MapControllerRoute("404-1", "404", new { controller = "Message", action = "NotFound" });
+               // endpoints.MapControllerRoute("404-2", "404.html", new { controller = "Message", action = "NotFound" });
+
+               // //Category
+               // endpoints.MapControllerRoute("cagegory1", "categories/{categoryName}", new { controller = "Home", action = "CategorySearch" });
+               // endpoints.MapControllerRoute("cagegory2", "categories/{categoryName}.html", new { controller = "Home", action = "CategorySearch" });
+
+               // //Search
+               // endpoints.MapControllerRoute("search1", "search/t={keywork}", new { controller = "Home", action = "Search" });
+               // endpoints.MapControllerRoute("search2", "search/t={keywork}.html", new { controller = "Home", action = "Search" });
+
+
+               // #region Manage
+
+               // //basic setting
+               // endpoints.MapControllerRoute("manage_setting", "manage/setting", new { controller = "Setting", action = "BasicSetting" });
+
+               //// endpoints.MapControllerRoute("manage_index", "manage", new { controller = "Article", action = "List" });
+
+               // //article
+               // endpoints.MapControllerRoute("manage_article_list", "manage/article_list_{pageIndex}_{pageSize}", new { controller = "Article", action = "List" });
+               // endpoints.MapControllerRoute("manage_article_create", "manage/article_create", new { controller = "Article", action = "Create" });
+               // endpoints.MapControllerRoute("manage_article_edit", "manage/article_edit_{articleId}", new { controller = "Article", action = "Edit" });
+
+               // //Category
+               // endpoints.MapControllerRoute("manage_category_list", "manage/category_list", new { controller = "Category", action = "List" });
+               // endpoints.MapControllerRoute("manage_category_create", "manage/category_create", new { controller = "Category", action = "Create" });
+               // endpoints.MapControllerRoute("manage_category_edit", "manage/category_edit", new { controller = "Category", action = "Edit" });
+
+               // //Log
+               // endpoints.MapControllerRoute("manage_log_list1", "manage/log_list", new { controller = "Log", action = "List" });
+               // endpoints.MapControllerRoute("manage_log_list2", "manage/log_list_{pageIndex}_{pageSize}", new { controller = "Log", action = "List" });
+
+               // #endregion Manage
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

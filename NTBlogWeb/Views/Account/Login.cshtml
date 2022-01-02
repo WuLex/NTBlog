@@ -29,14 +29,14 @@
                     <label class="blog-login-icon">
                         <i class="layui-icon">&#xe612;</i>
                     </label>
-                    <input type="text" name="userName" lay-verify="userName" value="@ViewBag.UserName" autocomplete="off" placeholder="这里输入登录名"
+                    <input type="text" name="userName" id="userName" lay-verify="userName" value="@ViewBag.UserName" autocomplete="off" placeholder="这里输入登录名"
                            class="layui-input">
                 </div>
                 <div class="layui-form-item">
                     <label class="blog-login-icon">
                         <i class="layui-icon">&#xe642;</i>
                     </label>
-                    <input type="password" name="password" lay-verify="password" autocomplete="off" placeholder="这里输入密码" class="layui-input">
+                    <input type="password" name="password" id="password"  lay-verify="password" autocomplete="off" placeholder="这里输入密码" class="layui-input">
                 </div>
                 <div class="layui-form-item">
                     <div class="blog-pull-left blog-login-remember">
@@ -47,9 +47,13 @@
                         <input type="checkbox" name="rememberMe" value="true" lay-skin="switch" @check title="记住帐号">
                     </div>
                     <div class="blog-pull-right">
-                        <button class="layui-btn layui-btn-primary" lay-submit lay-filter="login">
+                         <button type="button" class="layui-btn layui-btn-primary" id="login">
                             <i class="layui-icon">&#xe650;</i> 登录
                         </button>
+                        
+                       @* <button class="layui-btn layui-btn-primary" lay-submit lay-filter="login">
+                            <i class="layui-icon">&#xe650;</i> 登录
+                        </button>*@
                     </div>
                     <div class="blog-clear"></div>
                 </div>
@@ -66,8 +70,9 @@
         </div>
     </script>
     <script src="~/Plugins/layui/layui.js"></script>
+     <script src="~/Scripts/jquery-1.9.1.js"></script>
     <script>
-        layui.use(['layer', 'form'], function () {
+        layui.use(['layer', 'form','jquery'], function () {
             var layer = layui.layer
             , $ = layui.jquery
             , form = layui.form();
@@ -82,16 +87,58 @@
                         return '还有密码没输入呢。<img src="' + location.origin + '/Plugins/layui/images/face/4.gif" alt="[可怜]">';
                 }
             });
+           
             @{
-                var sessionValue = HttpContextAccessor.HttpContext.Session.Get("PwdErrorCount");
-                var errorCount = sessionValue == null ? 0 : Convert.ToInt32(sessionValue);
+                var sessionValue = HttpContextAccessor.HttpContext.Session.GetString("PwdErrorCount");
+                var errorCount = string.IsNullOrEmpty(sessionValue) ? 0 : Convert.ToInt32(sessionValue);
             }
             var errorCount = @errorCount;
 
-            form.on('submit(login)', function (data) {
-                if (errorCount > 5) {
+            //form.on('submit(login)', function (data) {
+            //    if (errorCount > 5) {
+            //        layer.open({
+            //            title: '<img src="' + location.origin + '/Plugins/layui/images/face/7.gif" alt="[害羞]">输入验证码',
+            //            type: 1,
+            //            content: document.getElementById('code-temp').innerHTML,
+            //            btn: ['确定'],
+            //            yes: function (index, layero) {
+            //                var $code = $('#code');
+            //                if ($code.val() === '') {
+            //                    layer.msg('输入验证码啦，让我知道你是人类。');
+            //                    isCheck = false;
+            //                } else {
+            //                    $('input[name=verifyCode]').val();
+            //                    var params = data.field;
+            //                    params.verifyCode = $code.val();
+            //                    submit($,params);
+            //                    layer.close(index);
+            //                }
+            //            },
+            //            area: ['250px', '150px']
+            //        });
+            //        $('#valiCode').off('click').on('click', function () {
+            //            this.src = '@Url.Action("GetValidateCode", "ValidateCode")?v=' + new Date().getTime();
+            //        });
+            //    }else{
+            //        submit($,data.field);
+            //    }
+
+            //    return false;
+            //});
+
+        });
+
+       $("#login ").on("click ", function() {
+
+       @{
+                var sessionVal = HttpContextAccessor.HttpContext.Session.GetString("PwdErrorCount ");
+                var errorNum = string.IsNullOrEmpty(sessionValue) ? 0 : Convert.ToInt32(sessionValue);
+       }
+            var errorNum = @errorNum; 
+               if (errorNum > 5) 
+               {
                     layer.open({
-                        title: '<img src="' + location.origin + '/Plugins/layui/images/face/7.gif" alt="[害羞]">输入验证码',
+                       title: '<img src="' + location.origin + '/Plugins/layui/images/face/7.gif" alt="[害羞]">输入验证码',
                         type: 1,
                         content: document.getElementById('code-temp').innerHTML,
                         btn: ['确定'],
@@ -113,29 +160,39 @@
                     $('#valiCode').off('click').on('click', function () {
                         this.src = '@Url.Action("GetValidateCode", "ValidateCode")?v=' + new Date().getTime();
                     });
-                }else{
-                    submit($,data.field);
                 }
-
+                else
+                {
+                    var userName = $('#userName').val();
+                    var password = $('#password').val();
+                    var params = {};
+                    params.userName = userName;
+                    params.password = password;
+                    submit($,params);
+                }
                 return false;
-            });
+       });
 
-        });
         function submit($,params)
         {
             $.post('@Url.Action("Login","Account")',params , function (res) {
                 if (!res.success) {
                     if (res.data !== undefined)
-                        errorCount = res.data.errorCount
-                    layer.msg(res.message,{icon:2});
-                }else
+                        {errorCount = res.data.errorCount
+                        }
+                        layer.msg(res.message,{icon:2});
+                       
+                }
+                else
                 {
                     layer.msg(res.message,{icon:1},function(index){
                         layer.close(index);
-                        location.href='@Url.Action("List","Article")';
                     });
+                   
                 }
             }, 'json');
+
+            window.location.href ="@Url.Action("List","Article")";
         }
     </script>
 </body>
