@@ -15,7 +15,9 @@ namespace NTBlogWeb.Helper
                 { "message",message}
             };
             if (data != null)
+            {
                 d.Add("data", data);
+            }
 
             return d;
         }

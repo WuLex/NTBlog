@@ -175,24 +175,58 @@
 
         function submit($,params)
         {
-            $.post('@Url.Action("Login","Account")',params , function (res) {
-                if (!res.success) {
-                    if (res.data !== undefined)
-                        {errorCount = res.data.errorCount
-                        }
-                        layer.msg(res.message,{icon:2});
+            //$.post('@Url.Action("Login","Account")',params , function (res) {
+            //    if (!res.success) {
+            //        if (res.data !== undefined)
+            //            {errorCount = res.data.errorCount
+            //            }
+            //            layer.msg(res.message,{icon:2});
                        
-                }
-                else
-                {
-                    layer.msg(res.message,{icon:1},function(index){
-                        layer.close(index);
-                    });
+            //    }
+            //    else
+            //    {
+            //        layer.msg(res.message,{icon:1},function(index){
+            //            layer.close(index);
+            //        });
                    
-                }
-            }, 'json');
+            //    }
+            //}, 'json');
 
-            window.location.href ="@Url.Action("List","Article")";
+   
+            $.ajax({
+                type:"post",
+                url:'@Url.Action("Login","Account")',
+                data: params,
+                success: function (res) {
+                        if (!res.success) 
+                        {
+                            if (res.data !== undefined)
+                            {
+                                 errorCount = res.data.errorCount
+                            }
+                            layer.msg(res.message,{icon:2});
+                        }
+                        else
+                        {
+                            layer.msg(res.message,{icon:1},function(index){
+                                layer.close(index);
+                            });
+                   
+                        }
+                       
+                        window.location.href ="@Url.Action("List","Article")";  
+                },
+                error:function (XMLHttpRequest, textStatus, errorThrown) 
+                {
+                       alert(XMLHttpRequest.responseText);
+                       alert(XMLHttpRequest.status);  
+                       alert(XMLHttpRequest.readyState);  
+                       alert(textStatus);  
+                       
+                       return false;
+                } 
+            })
+         
         }
     </script>
 </body>
