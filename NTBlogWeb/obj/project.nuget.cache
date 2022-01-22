@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "e+LrILapTdGhLAzFcckpoHyfoeIU+VtGvNhwmrGTCOKjofikxz+aD5cQ4Ey9/q3ksfBK0aVKdCzONC2Mu2RaFQ==",
+  "dgSpecHash": "s0OfOfuh35SvtSHa9lgEEt9fsa5rdKEPvnW+iCakpYSWf8BlyvjKtfpX6xDnidE5fYwlQ1S8jH/74t5MUdF66w==",
   "success": true,
   "projectFilePath": "E:\\GitProject\\NTBlog\\NTBlogWeb\\NTBlogWeb.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,8 @@
     "C:\\Users\\Administrator\\.nuget\\packages\\autofac.extensions.dependencyinjection\\7.2.0\\autofac.extensions.dependencyinjection.7.2.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\log4net\\2.0.13\\log4net.2.0.13.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\mapster\\7.2.0\\mapster.7.2.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\mapster.core\\1.2.0\\mapster.core.1.2.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.0.1\\microsoft.data.sqlclient.sni.runtime.2.0.1.nupkg.sha512",

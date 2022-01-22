@@ -48,6 +48,10 @@
               "target": "Package",
               "version": "[7.2.0, )"
             },
+            "Mapster": {
+              "target": "Package",
+              "version": "[7.2.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.13, )"

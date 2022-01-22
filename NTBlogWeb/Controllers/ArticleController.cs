@@ -9,6 +9,7 @@ using System.Linq;
 using System.Web;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Primitives;
+using Mapster;
 
 namespace NTBlogWeb.Controllers
 {
@@ -25,12 +26,27 @@ namespace NTBlogWeb.Controllers
             _categoryRepository = categoryRepository;
             _articleService = articleService;
         }
+
+        /// <summary>
+        /// 文章列表
+        /// </summary>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <returns></returns>
         public ActionResult List(int pageIndex = 1, int pageSize = 15)
         {
             //var query = _articleRepository.Table;
+            #region 获取用户名
+            ViewBag.UserName = GetUserName();
+
+            #endregion
+
             var setting = GetSetting();
             if (setting != null)
+            {
                 pageSize = setting.ManagePageSize;
+            }
+
 
             var request = new GetPageArticlesRequest(pageIndex, pageSize);
             #region Filter
@@ -79,37 +95,60 @@ namespace NTBlogWeb.Controllers
 
             return View(response.Pages);
         }
+
+        /// <summary>
+        /// 新增
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Create()
         {
             ViewBag.Categories = _categoryRepository.FindAll();
             return View();
         }
+
+
+        /// <summary>
+        /// 新增文章
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         //[ValidateInput(false)]
         public ActionResult Create(ArticleModel model)
         {
-            var article = new Article
-            {
-                Title = model.Title,
-                Content = model.Content,
-                Author = model.Author,
-                CreateTime = DateTime.Now,
-                IsTop = model.IsTop,
-                State = model.State,
-                Hits = model.Hits,
-                Tags = model.Tags,
-                CategoryId = model.CategoryId,
-                Sort = model.Sort,
-                MetaTitle = model.MetaTitle,
-                MetaKeywords = model.MetaKeywords,
-                MetaDescription = model.MetaDescription
-            };
+            #region 旧的手动赋值
+            //var article = new Article
+            //{
+            //    Title = model.Title,
+            //    Content = model.Content,
+            //    Author = model.Author,
+            //    CreateTime = DateTime.Now,
+            //    IsTop = model.IsTop,
+            //    State = model.State,
+            //    Hits = model.Hits,
+            //    Tags = model.Tags,
+            //    CategoryId = model.CategoryId,
+            //    Sort = model.Sort,
+            //    MetaTitle = model.MetaTitle,
+            //    MetaKeywords = model.MetaKeywords,
+            //    MetaDescription = model.MetaDescription
+            //}; 
+            #endregion
+            var article =  model.Adapt<Article>();
+
 
             _articleService.Insert(article);
 
             return RedirectToAction("List");
         }
+     
+        
+        /// <summary>
+        /// 编辑文章页面
+        /// </summary>
+        /// <param name="articleId"></param>
+        /// <returns></returns>
         public ActionResult Edit(string articleId)
         {
             int id;
@@ -122,6 +161,12 @@ namespace NTBlogWeb.Controllers
             }
             return RedirectToAction("NotFound", "Message");
         }
+      
+        /// <summary>
+        /// 编辑文章
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         //[ValidateInput(false)]

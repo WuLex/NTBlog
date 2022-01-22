@@ -36,6 +36,10 @@ namespace NTBlogWeb.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 登录页面
+        /// </summary>
+        /// <returns></returns>
         [AllowAnonymous]
         [HttpGet]
         public ActionResult Login()
@@ -75,6 +79,12 @@ namespace NTBlogWeb.Controllers
            
         }
 
+        /// <summary>
+        /// 登录
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
         [HttpPost]
         //[ValidateAntiForgeryToken]
         [AllowAnonymous]
@@ -187,7 +197,10 @@ namespace NTBlogWeb.Controllers
             //return Json(GetResult(true, "登录成功。"));
         }
 
-        //登出
+        /// <summary>
+        /// 退出
+        /// </summary>
+        /// <returns></returns>
         public ActionResult SignOut()
         {
             HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);

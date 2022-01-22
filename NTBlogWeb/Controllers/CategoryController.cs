@@ -44,6 +44,14 @@ namespace NTBlogWeb.Controllers
         {
             return View();
         }
+       
+        /// <summary>
+        /// 创建类别
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(CategoryModel model)
@@ -70,6 +78,10 @@ namespace NTBlogWeb.Controllers
             return RedirectToAction("List");
         }
 
+        /// <summary>
+        /// 编辑页面
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Edit()
         {
             var id = Request.Query["id"];

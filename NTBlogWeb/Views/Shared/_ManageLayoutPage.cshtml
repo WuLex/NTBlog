@@ -14,11 +14,12 @@
 <body class="layui-body-admin">
     <div class="layui-layout-admin">
         <div class="layui-header">
-            <a href="#" class="logo layui-left"><img src="" alt="">初学者</a>
+            <a href="#" class="logo layui-left">
+                <img src="" alt="">初学者</a>
         </div>
         <div class="layui-side" style="background-color:#393D49; color:white;">
             <div style="height: 100px;padding: 5px;line-height: 40px;text-align: center;">
-                <p>欢迎您，主人</p>
+                <p>欢迎您，@ViewBag.UserName</p>
                 <a href="@Url.Action("SignOut","Account")" style="border-radius:8px;" class="layui-btn layui-btn-small">退出</a>
             </div>
             <ul class="layui-nav layui-nav-tree">
@@ -47,7 +48,7 @@
         </div>
         <div class="layui-footer">
             <div class="layui-main">
-                Beginner © www.zhengjinfan.com
+                Beginner © Wulex
             </div>
         </div>
     </div>
