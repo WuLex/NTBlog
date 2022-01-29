@@ -10,6 +10,18 @@ namespace NTBlogWeb.Entities
             //注入Sql链接字符串
             optionsBuilder.UseSqlServer(@"Data Source=.;Initial Catalog=BlogDB;Persist Security Info=True;User ID=sa;Password=wu199010");
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Article>()
+                .HasOne(p => p.Category)
+                .WithMany(b => b.Articles)
+                .HasForeignKey(p => p.CategoryId)
+                .OnDelete(DeleteBehavior.SetNull)
+                //.WillCascadeOnDelete(false)
+                .IsRequired();
+        }
+
         public DbSet<Archive> Archives { get; set; }
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Article> Articles { get; set; }
@@ -18,6 +30,5 @@ namespace NTBlogWeb.Entities
         public DbSet<Log> Logs { get; set; }
         public DbSet<LoginLog> LoginLogs { get; set; }
         public DbSet<Tag> Tags { get; set; }
-        
     }
 }

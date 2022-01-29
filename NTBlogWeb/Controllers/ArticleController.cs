@@ -136,8 +136,6 @@ namespace NTBlogWeb.Controllers
             //}; 
             #endregion
             var article =  model.Adapt<Article>();
-
-
             _articleService.Insert(article);
 
             return RedirectToAction("List");
@@ -174,20 +172,28 @@ namespace NTBlogWeb.Controllers
         {
             var article = _articleRepository.FindById(model.Id);
 
-            article.Title = model.Title;
-            article.Content = model.Content;
-            article.Author = model.Author;
-            article.IsTop = model.IsTop;
-            article.State = model.State;
-            article.Hits = model.Hits;
-            article.Tags = model.Tags;
-            article.CategoryId = model.CategoryId;
-            article.Sort = model.Sort;
-            article.MetaTitle = model.MetaTitle;
-            article.MetaKeywords = model.MetaKeywords;
-            article.MetaDescription = model.MetaDescription;
+            if (article!=null)
+            {
 
-            _articleRepository.Update(article);
+                #region 旧的赋值方法
+                //article.Title = model.Title;
+                //article.Content = model.Content;
+                //article.Author = model.Author;
+                //article.IsTop = model.IsTop;
+                //article.State = model.State;
+                //article.Hits = model.Hits;
+                //article.Tags = model.Tags;
+                //article.CategoryId = model.CategoryId;
+                //article.Sort = model.Sort;
+                //article.MetaTitle = model.MetaTitle;
+                //article.MetaKeywords = model.MetaKeywords;
+                //article.MetaDescription = model.MetaDescription; 
+                #endregion
+
+                model.Adapt(article);
+                article.CreateTime = DateTime.Now;
+                _articleRepository.Update(article);
+            }
 
             return RedirectToAction("List");
         }

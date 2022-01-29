@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using NTBlogWeb.Core;
+using NTBlogWeb.Core.Email;
 using NTBlogWeb.Core.Extension;
 using NTBlogWeb.Helper;
 using NTBlogWeb.Models;
@@ -97,6 +99,7 @@ namespace NTBlogWeb.Controllers
             if (int.TryParse(articleId, out id))
             {
                 var article = _articleRepository.FindById(id);
+                article.Category = _categoryRepository.FindById(article.CategoryId);
                 if (article != null)
                 {
                     ViewBag.CommentList = _commentRepository.Table
@@ -106,7 +109,7 @@ namespace NTBlogWeb.Controllers
                     //浏览量+1
                     article.Hits += 1;
                     _articleRepository.Update(article);
-                    var cookie = Request.Cookies["CommentInfo"].FromLegacyCookieString();
+                    var cookie = Request.Cookies["CommentInfo"]?.FromLegacyCookieString();
                     if (cookie != null)
                     {
                         ViewBag.NickName = cookie["NickName"];
@@ -175,8 +178,8 @@ namespace NTBlogWeb.Controllers
 
             //发送邮件通知
             var subject = model.NickName + "评论了你的文章";
-            Core.Email.EmailServiceFactory.GetEmailService().SendMail("23532922@qq.com", subject, "这里有好多好多的内容。耍花枪顶替在无可奈何花落去 在s");
-
+            EmailServiceFactory.GetEmailService().SendMail("827937686@qq.com", subject, "这里有好多好多的内容。耍花枪顶替在无可奈何花落去 在s");
+            
             return RedirectToAction("Detail", new { articleId = model.ArticleId });
         }
 
@@ -200,14 +203,20 @@ namespace NTBlogWeb.Controllers
         /// </summary>
         private void LoadSideInfo()
         {
-            var state = (int)ArticleStatus.Normal;
+           var categorylist=  _categoryRepository.Table.Include(category => category.Articles).OrderByDescending(p => p.IsTop).ThenByDescending(p => p.Sort).ToList();
+            //for (int i = 0; i < categorylist.Count; i++)
+            //{
+            //    categorylist[i].Articles.Add = _articleRepository.TableNoTracking.Where(a => a.CategoryId == categorylist[i].Id).ToList();
+            //}
+
             //获取分类信息
-            ViewBag.Categories = _categoryRepository.Table.OrderByDescending(p => p.IsTop).ThenByDescending(p => p.Sort).ToList();
+            ViewBag.Categories = categorylist;
+
             //获取归档信息
             ViewBag.Archives = _archiveRepository.Table.OrderByDescending(p => p.Id).ToList();
 
             var topQuery = from a in _articleRepository.Table
-                           where a.State == state
+                           where a.State == (int)ArticleStatus.Normal
                            select new ArticleTopModel
                            {
                                Id = a.Id,
@@ -230,13 +239,16 @@ namespace NTBlogWeb.Controllers
             var pageSize = 15;//默认
             var setting = Configs.ConfigHelper.GetBasicConfig();
             if (setting != null)
+            {
                 pageSize = setting.WebsitePageSize;
+            }
 
             if (isLoadSideInfo)
+            {
                 LoadSideInfo();
-            var state = (int)ArticleStatus.Normal;
+            }
 
-            var query = _articleRepository.Table.Where(p => p.State == state);
+            var query = _articleRepository.Table.Where(p => p.State == (int)ArticleStatus.Normal);
 
             //关键字
             if (!string.IsNullOrEmpty(info.Keywork))

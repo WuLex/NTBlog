@@ -34,7 +34,7 @@ namespace NTBlogWeb.Models
         public virtual ICollection<Article> Articles
         {
             get { return _articles ?? (_articles = new List<Article>()); }
-            protected set { _articles = value; }
+            set { _articles = value; }
         }
     }
 }

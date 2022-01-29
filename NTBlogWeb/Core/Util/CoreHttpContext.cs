@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using NTBlogWeb.Helper;
 
 namespace NTBlogWeb.Core.Util
 {
     public static class CoreHttpContext
     {
-        private static IWebHostEnvironment _wevHostEnviroment;
+        private static IWebHostEnvironment _wevHostEnviroment= WebHelper.Instance.GetRequiredService<IWebHostEnvironment>();
         public static string WebPath => _wevHostEnviroment.WebRootPath;
 
         public static string MapPath(string path)

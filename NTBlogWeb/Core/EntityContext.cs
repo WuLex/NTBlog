@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using NTBlogWeb.Models;
+using NTBlogWeb.Models.Mapping;
 using System;
 using System.Collections.Generic;
 //using System.Data.Entity;
@@ -50,7 +51,9 @@ namespace NTBlogWeb.Core
 
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(EntityTypeConfiguration<>).Assembly); // Here UseConfiguration is any IEntityTypeConfiguration
+            //modelBuilder.ApplyConfigurationsFromAssembly(typeof(EntityTypeConfiguration<>).Assembly); // Here UseConfiguration is any IEntityTypeConfiguration
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(EntityContext).Assembly);
+
         }
 
         public DbSet<Archive> Archives { get; set; }

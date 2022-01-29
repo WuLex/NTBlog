@@ -105,6 +105,10 @@ namespace NTBlogWeb
             //赋值给静态类方便手动获取依赖注入对象
             WebHelper.Instance = app.ApplicationServices;
 
+            //初始化邮件
+            EmailServiceFactory.InitializeEmailServiceFactory(new SmtpService());
+
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
