@@ -28,8 +28,14 @@ namespace NTBlogWeb.Controllers
         public ActionResult List(int pageIndex = 1, int pageSize = 15)
         {
             var setting = GetSetting();
+            #region 获取用户名
+            ViewBag.UserName = GetUserName();
+            #endregion
+
             if (setting != null)
+            {
                 pageSize = setting.ManagePageSize;
+            }
 
             var query = _categoryRepository.Table;
 

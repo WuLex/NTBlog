@@ -38,7 +38,6 @@ namespace NTBlogWeb.Controllers
             //var query = _articleRepository.Table;
             #region 获取用户名
             ViewBag.UserName = GetUserName();
-
             #endregion
 
             var setting = GetSetting();

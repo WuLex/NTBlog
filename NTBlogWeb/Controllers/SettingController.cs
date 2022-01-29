@@ -13,7 +13,9 @@ namespace NTBlogWeb.Controllers
         public ActionResult BasicSetting()
         {
             var setting = Configs.ConfigHelper.GetBasicConfig();
-
+            #region 获取用户名
+            ViewBag.UserName = GetUserName();
+            #endregion
             return View(setting);
         }
 
