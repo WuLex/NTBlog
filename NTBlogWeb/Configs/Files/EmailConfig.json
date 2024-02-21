@@ -1,0 +1,9 @@
+﻿{
+  "Host": "smtp.qq.com",
+  "Port": 465,
+  "Form": "827******@qq.com",
+  "UserName": "lex2022",
+  "Password": "",
+  "EnableSsl": false,
+  "EnablePwdAuthentication": false
+}

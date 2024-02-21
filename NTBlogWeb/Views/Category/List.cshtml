@@ -1,0 +1,110 @@
+﻿@model NTBlogWeb.Core.PagedList<NTBlogWeb.Models.Category>
+@{
+    ViewBag.Title = "分类列表";
+    Layout = "~/Views/Shared/_ManageLayoutPage.cshtml";
+}
+
+<blockquote class="layui-elem-quote">
+    <a href="@Url.Action("Create", "Category")" class="layui-btn"><i class="layui-icon">&#xe61f;</i> 创建分类</a>
+
+</blockquote>
+
+
+<div class="blog-manage-table table-responsive">
+    <table class="table table-hover table-striped table-bordered">
+        <thead>
+        <tr>
+            <th style="text-align: center; width: 50px;">ID</th>
+            <th>分类名称</th>
+            <th>排序值</th>
+            <th>创建时间</a></th>
+            <th style="text-align: center;">置顶</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        @if (Model.Items != null && Model.Items.Count > 0)
+        {
+            foreach (var item in Model.Items)
+            {
+                <tr>
+                    <td style="text-align: center;">@item.Id</td>
+                    <td>@item.CategoryName</td>
+                    <td>@item.Sort</td>
+                    <td>@item.CreateTime.ToString("yyyy-MM-dd HH:mm")</td>
+                    @{
+                        var topText = item.IsTop ?
+                            "<i class=\"layui-icon\" style=\"color:green;\">&#xe616;</i>" :
+                            "<i class=\"layui-icon\" style=\"color:red;\">&#x1007;</i>";
+                    }
+                    <td style="text-align: center;">@Html.Raw(topText)</td>
+                    <td>
+                        <a href="@Url.Action("Edit", "Category", new { id = item.Id })">编辑</a>
+                        <a href="javascript:;" data-id="@item.Id" data-options="del" data-name="@item.CategoryName">删除</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td style="text-align: center;" colspan="6">暂无数据</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    <div class="blog-manage-page">
+        <div id="page" style="padding-left: 20px;"></div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        layui.use(['layer'],
+            function() {
+                var layer = layui.layer, $ = layui.jquery;
+
+                $('a[data-options=del]').each(function() {
+                    var $this = $(this);
+
+                    $this.on('click',
+                        function() {
+                            var id = $this.data('id');
+                            var name = $this.data('name');
+                            var msg = '你真的要把  <span style="color:red;">' + name + '</span> 给删除吗？<img src="' + location.origin + '/Plugins/layui/images/face/4.gif" alt="[可怜]">'
+                            var title = '萌萌的提示<img src="' + location.origin + '/Plugins/layui/images/face/7.gif" alt="[害羞]">'
+                            layer.confirm(msg,
+                                { icon: 3, title: title },
+                                function(index) {
+                                    var params = {
+                                        t: Math.random(),
+                                        id: id
+                                    };
+                                    $.post('@Url.Action("Delete", "Category")',
+                                        params,
+                                        function(result) {
+
+                                            if (result.success) {
+                                                layer.msg(result.message,
+                                                    { icon: 1 },
+                                                    function(index) {
+                                                        location.reload();
+                                                    });
+                                            } else {
+                                                layer.msg(result.message, { icon: 2 });
+                                            }
+
+                                        },
+                                        'json');
+                                    layer.close(index);
+                                });
+                        });
+                });
+                var $item = $('.layui-nav > .layui-nav-item');
+                $item.removeClass('layui-this').eq(2).addClass('layui-this');
+
+
+            });
+
+    </script>
+}

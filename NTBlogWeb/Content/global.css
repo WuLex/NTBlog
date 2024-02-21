@@ -1,0 +1,110 @@
+a {
+    color: #000;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #999;
+    text-decoration: none;
+    transition: all .5s;
+}
+
+.layui-right {
+    float: right;
+}
+
+.layui-left {
+    float: left;
+}
+
+/* 头部 */
+.layui-body-admin .layui-header {
+    /*height: 60px;*/
+    border-bottom: 5px solid #4E5465;
+    background-color: #393D49;
+}
+.layui-body-admin .logo {
+    background: #393D49;
+    display: inline-block;
+    height: 100%;
+    width:160px;
+    padding: 0 20px;
+    font-size:35px;
+    line-height:60px;
+    text-align: center;
+    color: #ffffff;
+}
+
+/* 侧栏 */
+.layui-body-admin .layui-side .layui-nav {
+    border-radius: 0;
+    min-height: 100%;
+}
+.layui-layout-admin .layui-body{
+    top: 62px;
+}
+
+/* 主体 */
+.layui-body-admin .layui-body {
+    padding: 10px;
+}
+
+/* 表单 */
+.blog-manage-form .layui-form-label{
+    width:105px;
+}
+.blog-manage-form .layui-form-switch{
+    width:51px;
+    height:24px;
+}
+
+
+/* 搜索表单 */
+.blog-manage-form-item-search{
+    margin-bottom:0;
+}
+.blog-manage-form-item-search .layui-input-block{
+    margin-left:60px;
+}
+.blog-manage-form-item-search .layui-form-item .layui-inline{
+    margin-bottom:0;
+ }
+.blog-manage-form-item-search .layui-inline .layui-form-label{
+    width:60px;
+ }
+
+
+/* footer */
+.layui-body-admin .layui-footer {
+    line-height: 44px;
+    /*padding: 10px;*/
+}
+
+/* table */
+.blog-manage-table{
+    /*padding:10px;*/
+    padding-bottom:40px;
+}
+.blog-manage-breadcrumb{
+    position: relative;
+    left: -10px;
+    top: -7px;
+    width:105%;
+}
+
+
+/* table page */
+.blog-manage-page{
+    position: fixed; 
+    z-index: 99999; 
+    bottom: 44px;
+    width:100%;
+    background-color: #eee;
+    border-bottom: 1px solid #ddd;
+    right:0;
+    left:200px;
+}
+.blog-manage-page .layui-laypage .layui-laypage-curr .layui-laypage-em{
+    left: 0;
+    top: 0;
+}

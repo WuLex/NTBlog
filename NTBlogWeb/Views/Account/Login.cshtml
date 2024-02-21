@@ -1,0 +1,226 @@
+﻿@{
+    Layout = null;
+}
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>管理员登录</title>
+    <link href="~/Plugins/layui/css/layui.css" rel="stylesheet"/>
+    <link href="~/Content/login.css" rel="stylesheet"/>
+</head>
+<body class="blog-login-bg">
+<div class="blog-login-box">
+    <header>
+        <h1>后台登录</h1>
+    </header>
+    <div class="blog-login-main">
+        @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "layui-form" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="layui-form-item">
+                <label class="blog-login-icon">
+                    <i class="layui-icon">&#xe612;</i>
+                </label>
+                <input type="text" name="userName" id="userName" lay-verify="userName" value="@ViewBag.UserName" autocomplete="off" placeholder="这里输入登录名"
+                       class="layui-input">
+            </div>
+            <div class="layui-form-item">
+                <label class="blog-login-icon">
+                    <i class="layui-icon">&#xe642;</i>
+                </label>
+                <input type="password" name="password" id="password" lay-verify="password" autocomplete="off" placeholder="这里输入密码" class="layui-input">
+            </div>
+            <div class="layui-form-item">
+                <div class="blog-pull-left blog-login-remember">
+                    <label>记住帐号？</label>
+                    @{
+                        var check = ViewBag.UserName != null ? "checked" : "";
+                    }
+                    <input type="checkbox" name="rememberMe" value="true" lay-skin="switch" @check title="记住帐号">
+                </div>
+                <div class="blog-pull-right">
+                    <button type="button" class="layui-btn layui-btn-primary" id="login">
+                        <i class="layui-icon">&#xe650;</i> 登录
+                    </button>
+
+                    @* <button class="layui-btn layui-btn-primary" lay-submit lay-filter="login">
+                            <i class="layui-icon">&#xe650;</i> 登录
+                        </button>*@
+                </div>
+                <div class="blog-clear"></div>
+            </div>
+        }
+    </div>
+    <footer>
+        <p></p>
+    </footer>
+</div>
+<script type="text/html" id="code-temp">
+    <div class="blog-login-code-box">
+        <input type="text" class="layui-input" id="code"/>
+        <img id="valiCode" src="@Url.Action("GetValidateCode", "ValidateCode", new { v = DateTime.Now.Ticks })" alt="验证码"/>
+    </div>
+</script>
+<script src="~/Plugins/layui/layui.js"></script>
+<script src="~/Scripts/jquery-1.9.1.js"></script>
+<script>
+    layui.use(['layer', 'form', 'jquery'],
+        function() {
+            var layer = layui.layer, $ = layui.jquery, form = layui.form();
+
+            form.verify({
+                userName: function(value) {
+                    if (value === '')
+                        return '哎呀，你就先输入用户名吧。<img src="' + location.origin + '/Plugins/layui/images/face/4.gif" alt="[可怜]">';
+                },
+                password: function(value) {
+                    if (value === '')
+                        return '还有密码没输入呢。<img src="' + location.origin + '/Plugins/layui/images/face/4.gif" alt="[可怜]">';
+                }
+            });
+           
+            @{
+                var sessionValue = HttpContextAccessor.HttpContext.Session.GetString("PwdErrorCount");
+                var errorCount = string.IsNullOrEmpty(sessionValue) ? 0 : Convert.ToInt32(sessionValue);
+            }
+            var errorCount = @errorCount;
+
+            //form.on('submit(login)', function (data) {
+            //    if (errorCount > 5) {
+            //        layer.open({
+            //            title: '<img src="' + location.origin + '/Plugins/layui/images/face/7.gif" alt="[害羞]">输入验证码',
+            //            type: 1,
+            //            content: document.getElementById('code-temp').innerHTML,
+            //            btn: ['确定'],
+            //            yes: function (index, layero) {
+            //                var $code = $('#code');
+            //                if ($code.val() === '') {
+            //                    layer.msg('输入验证码啦，让我知道你是人类。');
+            //                    isCheck = false;
+            //                } else {
+            //                    $('input[name=verifyCode]').val();
+            //                    var params = data.field;
+            //                    params.verifyCode = $code.val();
+            //                    submit($,params);
+            //                    layer.close(index);
+            //                }
+            //            },
+            //            area: ['250px', '150px']
+            //        });
+            //        $('#valiCode').off('click').on('click', function () {
+            //            this.src = '@Url.Action("GetValidateCode", "ValidateCode")?v=' + new Date().getTime();
+            //        });
+            //    }else{
+            //        submit($,data.field);
+            //    }
+
+            //    return false;
+            //});
+
+        });
+
+    $("#login ").on("click ",
+        function() {
+
+            @{
+                var sessionVal = HttpContextAccessor.HttpContext.Session.GetString("PwdErrorCount ");
+                var errorNum = string.IsNullOrEmpty(sessionValue) ? 0 : Convert.ToInt32(sessionValue);
+            }
+            var errorNum = @errorNum;
+            if (errorNum > 5) {
+                layer.open({
+                    title: '<img src="' + location.origin + '/Plugins/layui/images/face/7.gif" alt="[害羞]">输入验证码',
+                    type: 1,
+                    content: document.getElementById('code-temp').innerHTML,
+                    btn: ['确定'],
+                    yes: function(index, layero) {
+                        var $code = $('#code');
+                        if ($code.val() === '') {
+                            layer.msg('输入验证码啦，让我知道你是人类。');
+                            isCheck = false;
+                        } else {
+                            $('input[name=verifyCode]').val();
+                            var params = data.field;
+                            params.verifyCode = $code.val();
+                            submit($, params);
+                            layer.close(index);
+                        }
+                    },
+                    area: ['250px', '150px']
+                });
+                $('#valiCode').off('click').on('click',
+                    function() {
+                        this.src = '@Url.Action("GetValidateCode", "ValidateCode")?v=' + new Date().getTime();
+                    });
+            } else {
+                var userName = $('#userName').val();
+                var password = $('#password').val();
+                var params = {};
+                params.userName = userName;
+                params.password = password;
+                submit($, params);
+            }
+            return false;
+        });
+
+    function submit($, params) {
+        //$.post('@Url.Action("Login", "Account")',params , function (res) {
+        //    if (!res.success) {
+        //        if (res.data !== undefined)
+        //            {errorCount = res.data.errorCount
+        //            }
+        //            layer.msg(res.message,{icon:2});
+
+        //    }
+        //    else
+        //    {
+        //        layer.msg(res.message,{icon:1},function(index){
+        //            layer.close(index);
+        //        });
+
+        //    }
+        //}, 'json');
+
+
+        $.ajax({
+            type: "post",
+            url: '@Url.Action("Login", "Account")',
+            data: params,
+            success: function(res) {
+                if (!res.success) {
+                    if (res.data !== undefined) {
+                        errorCount = res.data.errorCount
+                    }
+                    layer.msg(res.message, { icon: 2 });
+                } else {
+                    layer.msg(res.message,
+                        { icon: 1 },
+                        function(index) {
+                            layer.close(index);
+                        });
+
+                }
+
+                window.location.href = "@Url.Action("List", "Article")";
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                alert(XMLHttpRequest.responseText);
+                alert(XMLHttpRequest.status);
+                alert(XMLHttpRequest.readyState);
+                alert(textStatus);
+
+                return false;
+            }
+        })
+
+    }
+</script>
+</body>
+</html>
